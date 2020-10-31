@@ -1,0 +1,7 @@
+.Duration {
+  display: grid;
+  align-items: center;
+  grid-template-columns: auto auto;
+  grid-gap: 14px;
+  line-height: 1;
+}

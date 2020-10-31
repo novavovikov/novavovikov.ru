@@ -1,0 +1,75 @@
+:global {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-size: 16px;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+      sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    background: var(--c-bg-main);
+    color: var(--c-text-main);
+    font-size: 1rem;
+    font-weight: 300;
+    min-width: 320px;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font-family: inherit;
+    color: inherit;
+    font-size: inherit;
+  }
+
+  input::placeholder,
+  textarea::placeholder,
+  select::placeholder {
+    color: inherit;
+    opacity: 0.5;
+  }
+
+  button {
+    padding: 0;
+    margin: 0;
+    border: none;
+    cursor: pointer;
+  }
+
+  a {
+    color: var(--c-accent);
+
+    &:hover {
+      color: var(--c-accent-secondary);
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: Montserrat, sans-serif;
+    font-weight: 900;
+    line-height: 1.125;
+  }
+
+  .icon {
+    fill: var(--c-icon);
+
+    &:hover {
+      fill: var(--c-accent);
+    }
+  }
+
+  .illustration {
+    fill: var(--c-illustration);
+  }
+}

@@ -1,0 +1,29 @@
+.Event {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: var(--gap);
+  background: var(--c-bg-accent);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius);
+
+  &__info {
+  }
+
+  &__description {
+  }
+
+  &__location {
+    font-size: var(--font-xs);
+    color: var(--c-text-secondary);
+  }
+
+  &__dates {
+    font-size: var(--font-xxs);
+    line-height: 2;
+    text-align: right;
+  }
+
+  &__calendar {
+  }
+}

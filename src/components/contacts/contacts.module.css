@@ -1,0 +1,19 @@
+.Contacts {
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  justify-items: center;
+
+  &__item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}

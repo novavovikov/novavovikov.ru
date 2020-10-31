@@ -1,0 +1,20 @@
+.Share {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 10px;
+
+  &__control {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: none;
+  }
+
+  &__control svg {
+    width: 22px;
+    height: 22px;
+    transition: var(--transition-f);
+  }
+}

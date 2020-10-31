@@ -1,0 +1,32 @@
+.Main {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  grid-gap: var(--gap);
+  align-items: flex-start;
+}
+
+.Content {
+}
+
+.Sidebar {
+  position: sticky;
+  top: 20px;
+  display: grid;
+  align-content: flex-start;
+  grid-gap: var(--gap);
+}
+
+.SidebarAside {
+  display: grid;
+  grid-gap: var(--gap);
+
+  &__link {
+    text-decoration: none;
+    font-size: var(--font-xxs);
+  }
+}
+
+.Links {
+  text-align: right;
+  margin-top: -10px;
+}

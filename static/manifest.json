@@ -1,0 +1,12 @@
+{
+  "short_name": "NovaVovikov",
+  "name": "NovaVovikov",
+  "description": "NovaVovikov Blog",
+  "display": "standalone",
+  "theme_color": "#0366d6",
+  "background_color": "#fff",
+  "scope": "/",
+  "start_url": "./?utm_source=web_app_manifest",
+  "orientation": "portrait-primary",
+  "icons": []
+}

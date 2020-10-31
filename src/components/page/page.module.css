@@ -1,0 +1,13 @@
+.Page {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+
+  &__title {
+    margin: 0 0 30px;
+  }
+
+  &__content {
+    padding: 30px 0 40px;
+  }
+}

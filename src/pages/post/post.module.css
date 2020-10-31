@@ -1,0 +1,16 @@
+.PostPreview {
+  max-width: 760px;
+  padding: 1.4rem 0;
+  margin: 2rem auto 0;
+
+  &__title {
+    margin: 0 0 1.4rem;
+  }
+
+  &__content {
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: auto auto;
+    grid-gap: var(--gap);
+  }
+}
