@@ -1,7 +1,10 @@
 import React from 'react'
 import { Theme, ThemeContext } from './context'
 
-const initialTheme = (localStorage.getItem('theme') as Theme) ?? 'dark'
+const initialTheme =
+  typeof window === `undefined`
+    ? 'dark'
+    : (localStorage.getItem('theme') as Theme) ?? 'dark'
 
 export default function ThemeProvider({ children }) {
   const [theme, onChangeTheme] = React.useState<Theme>(initialTheme)

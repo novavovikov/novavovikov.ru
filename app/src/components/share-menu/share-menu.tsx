@@ -5,7 +5,7 @@ import MobileShare from './mobile-share'
 import { ShareParams } from '../../utils/share'
 
 export default function ShareMenu(props: ShareParams) {
-  if (navigator.share && isMobile) {
+  if (typeof window !== 'undefined' && navigator.share && isMobile) {
     return <MobileShare {...props} />
   }
 

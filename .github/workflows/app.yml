@@ -1,0 +1,31 @@
+name: Blog-app
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - run: echo "::set-env name=PROD_HOST::${{ secrets.PROD_HOST }}"
+      - name: Setup SSH
+        uses: kielabokkie/ssh-key-and-known-hosts-action@v1.0.1
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-host: ${{ secrets.PROD_HOST }}
+
+      - name: Build images
+        run: |
+          docker-compose build --no-cache
+          docker-compose push
+      - name: Deploy
+        run: |
+          export DOCKER_HOST=ssh://${{ secrets.PROD_USER }}@${{ secrets.PROD_HOST }}:${{ secrets.PROD_PORT }}
+          docker-compose pull
+          docker-compose up --force-recreate -d
+          unset DOCKER_HOST

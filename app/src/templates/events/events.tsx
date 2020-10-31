@@ -1,3 +1,4 @@
+import { PageProps } from 'gatsby'
 import React from 'react'
 import Page from '../../components/page'
 import { EventType } from '../../typings/event'
@@ -6,14 +7,12 @@ import Map from '../../components/map'
 import { Coordinates } from '../../components/map/map'
 import s from './events.module.css'
 
-interface Props {
-  pageContext: {
-    name: String
-    events: EventType[]
-  }
+interface PageContext {
+  name: String
+  events: EventType[]
 }
 
-export default function FrontendEvents(props: Props) {
+export default function FrontendEvents(props: PageProps<{}, PageContext>) {
   const { name, events } = props.pageContext
 
   const coordinates = events.reduce<Coordinates[]>((acc, { locationData }) => {

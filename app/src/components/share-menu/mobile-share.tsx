@@ -5,7 +5,7 @@ export default function MobileShare(props: ShareParams) {
   const { url, text } = props
 
   const handleMenu = React.useCallback(() => {
-    const link = Share.urlNormalizer(`${window.location.origin}${url}`)
+    const link = Share.urlNormalizer(url)
 
     navigator.share({
       title: text || '',

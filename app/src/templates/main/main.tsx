@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql, Link } from 'gatsby'
+import { graphql, Link, PageProps } from 'gatsby'
 import { AllMarkdownRemark, Site } from '../../typings/markdown'
 import Page from '../../components/page'
 import Articles from '../../components/articles'
@@ -13,17 +13,16 @@ import { filterArticles } from '../../utils/articles'
 import { pluralizeText } from '../../utils/pluralizeText'
 import s from './main.module.css'
 
-interface Props {
-  pageContext: {
-    tags: string[]
-  }
-  data: {
-    site: Site
-    allMarkdownRemark: AllMarkdownRemark
-  }
+interface Data {
+  site: Site
+  allMarkdownRemark: AllMarkdownRemark
 }
 
-export default function MainPage(props: Props) {
+interface PageContext {
+  tags: string[]
+}
+
+export default function MainPage(props: PageProps<Data, PageContext>) {
   const { tags } = props.pageContext
   const { allMarkdownRemark, site } = props.data
 

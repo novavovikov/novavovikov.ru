@@ -54,7 +54,7 @@ exports.createPages = async ({ actions, graphql }) => {
 
   createPage({
     path: '/',
-    component: path.resolve('./src/pages/main/main.tsx'),
+    component: path.resolve('./src/templates/main/main.tsx'),
     context: { tags: Array.from(allTags) }
   })
 
@@ -77,7 +77,7 @@ exports.createPages = async ({ actions, graphql }) => {
 
     createPage({
       path: slug,
-      component: path.resolve(`src/pages/post/post.tsx`),
+      component: path.resolve(`src/templates/post/post.tsx`),
       context: {
         slug,
 
@@ -100,7 +100,7 @@ exports.createPages = async ({ actions, graphql }) => {
     .then(async ({ data }) => {
       createPage({
         path: 'events/frontend',
-        component: path.resolve(`src/pages/events/events.tsx`),
+        component: path.resolve(`src/templates/events/events.tsx`),
         context: {
           name: 'Frontend',
           events: await getEventsWithLocationsData(data, {
@@ -132,7 +132,7 @@ exports.createPages = async ({ actions, graphql }) => {
 
       createPage({
         path: 'events/kotlin',
-        component: path.resolve(`src/pages/events/events.tsx`),
+        component: path.resolve(`src/templates/events/events.tsx`),
         context: {
           name: 'Kotlin',
           events: await getEventsWithLocationsData(events.event)

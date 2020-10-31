@@ -1,6 +1,6 @@
 import React from 'react'
 import { ArticleInfo } from '../../typings/markdown'
-import Duration from '../../components/duration'
+import Duration from '../duration'
 import Img from 'gatsby-image'
 import ExternalLink from '../external-link'
 import ShareMenu from '../share-menu'
@@ -8,13 +8,14 @@ import s from './post.module.css'
 import Tags from '../tags/tags'
 
 interface Props {
+  postLink: string
   githubLink: string
   article: ArticleInfo
 }
 
-export default function Post({ githubLink, article }: Props) {
-  const { html, timeToRead, frontmatter } = article
-  const { title, date, cover, tags } = frontmatter
+export default function Post(props: Props) {
+  const { html, timeToRead } = props.article
+  const { title, date, cover, tags } = props.article.frontmatter
   const coverFluid = cover?.childImageSharp.fluid
 
   return (
@@ -24,7 +25,7 @@ export default function Post({ githubLink, article }: Props) {
 
         <div>
           <ExternalLink
-            href={githubLink}
+            href={props.githubLink}
             target="_blank"
             className={s.Post__edit}
             title="Редактировать на GitHub">
@@ -41,11 +42,7 @@ export default function Post({ githubLink, article }: Props) {
           timeToRead={timeToRead}
         />
 
-        <ShareMenu
-          url={window.location.href}
-          text={title}
-          image={coverFluid?.src}
-        />
+        <ShareMenu url={props.postLink} text={title} image={coverFluid?.src} />
       </div>
 
       {coverFluid && (

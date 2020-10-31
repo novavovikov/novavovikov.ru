@@ -14,4 +14,4 @@ public
 .DS_Store
 
 # Webstorm
-.idea
+../.idea
