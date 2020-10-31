@@ -24,15 +24,32 @@ module.exports = {
       }
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: 'articles',
+        path: `${__dirname}/articles`
+      }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: 'assets',
+        path: `${__dirname}/src/assets`
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /\.svg$/,
+          resourceQuery: /inline/
+        }
+      }
+    },
+    {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 760
-            }
-          },
           {
             resolve: `gatsby-remark-embedder`,
             options: {
@@ -43,6 +60,12 @@ module.exports = {
               services: {
                 // The service-specific options by the name of the service
               }
+            }
+          },
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 760
             }
           },
           {
@@ -66,29 +89,6 @@ module.exports = {
             }
           }
         ]
-      }
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: 'articles',
-        path: `${__dirname}/articles`
-      }
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: 'assets',
-        path: `${__dirname}/src/assets`
-      }
-    },
-    {
-      resolve: 'gatsby-plugin-react-svg',
-      options: {
-        rule: {
-          include: /\.svg$/,
-          resourceQuery: /inline/
-        }
       }
     },
     {
@@ -122,8 +122,8 @@ module.exports = {
       }
     },
     `gatsby-plugin-css-modules-typings`,
-    `gatsby-transformer-sharp`,
     'gatsby-plugin-sharp',
+    `gatsby-transformer-sharp`,
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-catch-links',
     'gatsby-plugin-use-query-params'

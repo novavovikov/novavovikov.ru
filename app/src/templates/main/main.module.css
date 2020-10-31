@@ -3,6 +3,11 @@
   grid-template-columns: 1fr 280px;
   grid-gap: var(--gap);
   align-items: flex-start;
+
+  @media only screen and (max-width: 1100px) {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .Content {
@@ -14,11 +19,26 @@
   display: grid;
   align-content: flex-start;
   grid-gap: var(--gap);
+
+  @media only screen and (max-width: 1100px) {
+    position: relative;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  @media only screen and (max-width: 760px) {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
 }
 
 .SidebarAside {
   display: grid;
   grid-gap: var(--gap);
+
+  @media only screen and (max-width: 760px) {
+    grid-template-columns: 1fr 1fr;
+  }
 
   &__link {
     text-decoration: none;

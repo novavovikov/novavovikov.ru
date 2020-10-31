@@ -4,6 +4,11 @@
   align-items: center;
   justify-items: center;
 
+  @media only screen and (max-width: 760px) {
+    justify-content: flex-start;
+    grid-gap: var(--gap);
+  }
+
   &__item {
     display: inline-flex;
     align-items: center;

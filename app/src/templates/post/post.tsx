@@ -32,7 +32,7 @@ export default function PostPage(props: PageProps<PostData, PostPageContext>) {
       }}>
       <Post
         postLink={props.location.href}
-        githubLink={`${LINKS.gh}${slug}`}
+        githubLink={`${LINKS.articles}${slug}`}
         article={markdownRemark}
       />
 
@@ -40,10 +40,10 @@ export default function PostPage(props: PageProps<PostData, PostPageContext>) {
         <h3 className={s.PostPreview__title}>Читать ещё:</h3>
 
         <div className={s.PostPreview__content}>
-          <div>
+          <div className={s.PostPreview__item}>
             {prev && <PostPreview {...prev} imageUrl={prevPostImage} />}
           </div>
-          <div>
+          <div className={s.PostPreview__item}>
             {next && <PostPreview inverse {...next} imageUrl={nextPostImage} />}
           </div>
         </div>

@@ -26,7 +26,7 @@ export default function HTML({
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
-        <title>NovaVovikov | Personal blog 🌈</title>
+        <title>A blog by Vladimir Novikov 🌈</title>
         <link
           href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap"
           rel="stylesheet"

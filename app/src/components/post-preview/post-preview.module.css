@@ -3,9 +3,14 @@
   display: block;
   width: 220px;
   height: 100px;
+  max-width: 100%;
   background: var(--c-gray);
   border-radius: var(--radius);
   overflow: hidden;
+
+  @media only screen and (max-width: 670px) {
+    width: 130px;
+  }
 
   &:before {
     content: "";
@@ -51,6 +56,10 @@
 
     &:hover {
       color: #fff;
+    }
+
+    @media only screen and (max-width: 670px) {
+      padding: 10px;
     }
   }
 }

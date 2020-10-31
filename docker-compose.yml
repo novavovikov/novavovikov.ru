@@ -4,7 +4,7 @@ services:
   app:
     build: app
     volumes:
-      - public:/app/public:rw
+      - public:/app/public
 
   proxy:
     build: proxy

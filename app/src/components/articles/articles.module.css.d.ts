@@ -9,3 +9,4 @@ export const Article__description: string;
 export const Article__tags: string;
 export const Article__footer: string;
 export const Article__info: string;
+export const Article__duration: string;

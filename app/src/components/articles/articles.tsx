@@ -1,5 +1,4 @@
 import React from 'react'
-import cn from 'classnames'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 import { MarkdownEdge } from '../../typings/markdown'
@@ -26,6 +25,19 @@ export default function Articles({ articles }: Props) {
         return (
           <div key={id}>
             <div key={id} className={s.Article}>
+              <Link to={fields.slug} className={s.Article__imgLink}>
+                {cover && (
+                  <Img
+                    className={s.Article__img}
+                    fluid={cover.childImageSharp.fluid}
+                    alt={title}
+                    imgStyle={{
+                      transition: '0.25s'
+                    }}
+                  />
+                )}
+              </Link>
+
               <div className={s.Article__content}>
                 <Link to={fields.slug} className={s.Article__header}>
                   <h4 className={s.Article__title}>{title}</h4>
@@ -40,23 +52,10 @@ export default function Articles({ articles }: Props) {
                 )}
                 <div className={s.Article__footer}>
                   <div className={s.Article__info}>
-                    <Duration date={date} timeToRead={timeToRead} />
+                    <Duration className={s.Article__duration} date={date} timeToRead={timeToRead} />
                   </div>
                 </div>
               </div>
-
-              <Link to={fields.slug} className={s.Article__imgLink}>
-                {cover && (
-                  <Img
-                    className={s.Article__img}
-                    fluid={cover.childImageSharp.fluid}
-                    alt={title}
-                    imgStyle={{
-                      transition: '0.25s'
-                    }}
-                  />
-                )}
-              </Link>
             </div>
           </div>
         )

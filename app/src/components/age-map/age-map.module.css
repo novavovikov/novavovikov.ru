@@ -1,0 +1,27 @@
+.AgeMap {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  width: 520px;
+
+  &__week {
+    display: inline-flex;
+    width: 10px;
+    height: 10px;
+    background: var(--c-gray);
+    border-right: 1px solid var(--c-text-main);
+    border-bottom: 1px solid var(--c-text-main);
+
+    &_filled {
+      background: var(--c-accent);
+      border-right: 1px solid var(--c-text-main);
+      border-bottom: 1px solid var(--c-text-main);
+      border-right: 1px solid var(--c-gray);
+      border-bottom: 1px solid var(--c-gray);
+    }
+
+    &:nth-child(52n) {
+      border-right: none;
+    }
+  }
+}

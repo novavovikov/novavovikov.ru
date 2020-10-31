@@ -46,12 +46,12 @@ export default function SEO({
   const metaTitle = React.useMemo(() => {
     if (title) {
       return {
-        titleTemplate: `%s — ${siteMetadata.title.toLowerCase()}`,
+        titleTemplate: `%s — ${siteMetadata.title.toLowerCase()} — A blog by Vladimir Novikov 🌈`,
         title
       }
     }
 
-    return { title: `${siteMetadata.title} — A blog by Vladimir Novikov` }
+    return { title: `${siteMetadata.title} — A blog by Vladimir Novikov 🌈` }
   }, [title, siteMetadata.title])
 
   const defaultMeta = [

@@ -10,6 +10,10 @@
   --font-xxl: 2.2rem;
   --font-3xl: 3rem;
 
+  @media only screen and (max-width: 670px) {
+
+  }
+
   --gap: 20px;
 
   --radius: 6px;

@@ -37,6 +37,11 @@
     transition: var(--transition-m);
     z-index: 2;
 
+    @media only screen and (max-width: 670px) {
+      padding: 10px;
+      font-size: 1.4em;
+    }
+
     &:hover {
       color: #fff;
     }

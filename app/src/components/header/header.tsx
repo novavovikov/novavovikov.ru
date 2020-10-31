@@ -24,7 +24,7 @@ export default function Header() {
           </div>
 
           <div className={s.HeaderSection}>
-            <ExternalLink className={s.Header__ghlink} href={LINKS.gh}>
+            <ExternalLink className={s.Header__ghlink} href={LINKS.articles}>
               ✍️ Написать статью
             </ExternalLink>
 

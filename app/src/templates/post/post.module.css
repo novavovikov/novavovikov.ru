@@ -13,4 +13,7 @@
     grid-template-columns: auto auto;
     grid-gap: var(--gap);
   }
+
+  &__item {
+  }
 }

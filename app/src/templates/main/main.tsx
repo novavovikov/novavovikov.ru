@@ -22,7 +22,7 @@ interface PageContext {
   tags: string[]
 }
 
-export default function MainPage(props: PageProps<Data, PageContext>) {
+export default function MainPage (props: PageProps<Data, PageContext>) {
   const { tags } = props.pageContext
   const { allMarkdownRemark, site } = props.data
 
@@ -59,25 +59,9 @@ export default function MainPage(props: PageProps<Data, PageContext>) {
     <Page title={title}>
       <div className={s.Main}>
         <div className={s.Content}>
-          <Articles articles={articles} />
+          <Articles articles={articles}/>
         </div>
         <div className={s.Sidebar}>
-          {tags.length > 0 && (
-            <SidebarBlock title="Теги" icon="#️⃣">
-              <Tags tags={tags} />
-            </SidebarBlock>
-          )}
-
-          <SidebarBlock
-            title="Контакты"
-            icon="📟"
-            aside={
-              <Link to="/about" className={s.SidebarAside__link}>
-                Обо мне
-              </Link>
-            }>
-            <Contacts data={site.siteMetadata.social} />
-          </SidebarBlock>
           <SidebarBlock title="События" icon="📅">
             <div className={s.SidebarAside}>
               <EventsBlock
@@ -93,11 +77,30 @@ export default function MainPage(props: PageProps<Data, PageContext>) {
             </div>
           </SidebarBlock>
 
-          <div className={s.Links}>
-            <Link to="#" className={s.SidebarAside__link}>
-              Обратная связь
-            </Link>
-          </div>
+          <SidebarBlock
+            title="Контакты"
+            icon="📟"
+            aside={
+              false && <Link to="/about" className={s.SidebarAside__link}>
+                Обо мне
+              </Link>
+            }>
+            <Contacts data={site.siteMetadata.social}/>
+          </SidebarBlock>
+
+          {tags.length > 0 && (
+            <SidebarBlock title="Теги" icon="#️⃣">
+              <Tags tags={tags}/>
+            </SidebarBlock>
+          )}
+
+          {false && (
+            <div className={s.Links}>
+              <Link to="#" className={s.SidebarAside__link}>
+                Обратная связь
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </Page>
