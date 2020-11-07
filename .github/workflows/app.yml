@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Setup SSH
-        uses: kielabokkie/ssh-key-and-known-hosts-action@v1.0.1
+        uses: kielabokkie/ssh-key-and-known-hosts-action@v1
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
           ssh-host: ${{ secrets.PROD_HOST }}
@@ -28,7 +28,9 @@ jobs:
       - name: Deploy
         run: |
           export DOCKER_HOST=ssh://${{ secrets.PROD_USER }}@${{ secrets.PROD_HOST }}:${{ secrets.PROD_PORT }}
+
           docker-compose stop
+          docker volume rm $(docker volume ls -q)
 
           docker-compose pull
           docker-compose up -d

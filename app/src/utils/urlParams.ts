@@ -4,7 +4,7 @@ interface Params {
 }
 
 const getParams = (params: Partial<Params>): Params => ({
-  search: window.location.search,
+  search: typeof window !== 'undefined' ? window.location.search : '',
   prefix: '',
   ...params
 })
