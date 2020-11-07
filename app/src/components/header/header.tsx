@@ -1,12 +1,13 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import { useThemeContext } from '../../providers/theme'
-import Container from '../container'
+import Container from '../../ui/container'
 import LogoIcon from './icons/logo.svg?inline'
 import Search from '../search'
-import s from './header.module.css'
-import ExternalLink from '../external-link'
+import ExternalLink from '../../ui/external-link'
 import { LINKS } from '../../constants/links'
+import Button from '../../ui/button'
+import s from './header.module.css'
 
 export default function Header() {
   const { theme, switchTheme } = useThemeContext()
@@ -24,9 +25,13 @@ export default function Header() {
           </div>
 
           <div className={s.HeaderSection}>
-            <ExternalLink className={s.Header__ghlink} href={LINKS.articles}>
+            <Button<typeof ExternalLink>
+              className={s.Header__ghlink}
+              theme="transparent"
+              component={ExternalLink}
+              href={LINKS.articles}>
               ✍️ Написать статью
-            </ExternalLink>
+            </Button>
 
             <button
               className={s.Header__theme}

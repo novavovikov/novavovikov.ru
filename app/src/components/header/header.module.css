@@ -3,35 +3,7 @@
   z-index: 10;
 
   &__ghlink {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 5px 10px;
-    line-height: 1;
-    min-height: 40px;
-    font-size: var(--font-xxs);
-    background: none;
-    color: var(--c-text-main);
-    text-decoration: none;
-    border: 1px solid var(--c-border);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-main);
     margin: 0 10px;
-
-    &:hover {
-      background: var(--c-accent);
-      color: var(--c-white);
-    }
-
-    &:active {
-      box-shadow: none;
-    }
-
-    &:disabled {
-      box-shadow: none;
-      background: var(--c-bg-secondary);
-      cursor: default;
-    }
   }
 
   &__theme {

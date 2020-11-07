@@ -1,5 +1,5 @@
 import React from 'react'
-import Input from '../input'
+import Input from '../../ui/input'
 import s from './search.module.css'
 
 export default function Search() {

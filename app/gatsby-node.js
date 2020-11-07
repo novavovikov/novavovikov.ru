@@ -2,7 +2,7 @@ const path = require(`path`)
 const axios = require('axios')
 const { parseStringPromise } = require('xml2js')
 const { createFilePath } = require(`gatsby-source-filesystem`)
-const { getEventsWithLocationsData } = require(`./event-locations`)
+const { getEventsWithLocationsData } = require(`./modules/event-locations`)
 
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions

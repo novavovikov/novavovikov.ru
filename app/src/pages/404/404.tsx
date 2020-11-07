@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import Page from '../../components/page'
+import Page from '../../ui/page'
 import NotFoundImage from './images/not-found.svg?inline'
 
 export default function NotFoundPage() {

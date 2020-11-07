@@ -1,4 +1,4 @@
-const yandexMusicTransformer = require('./src/utils/yandex-mudic-transformer')
+const yandexMusicTransformer = require('./src/utils/yandex-music-transformer')
 
 module.exports = {
   siteMetadata: {
@@ -126,6 +126,8 @@ module.exports = {
     `gatsby-transformer-sharp`,
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-catch-links',
-    'gatsby-plugin-use-query-params'
+    'gatsby-plugin-use-query-params',
+    `gatsby-plugin-sitemap`,
+    `gatsby-plugin-feed`
   ]
 }

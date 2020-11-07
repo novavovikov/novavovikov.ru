@@ -3,7 +3,7 @@ import twIcon from './icons/tw.svg?inline'
 import tgIcon from './icons/telegram.svg?inline'
 import fbIcon from './icons/fb.svg?inline'
 import { ShareParams, SocialSystem } from '../../utils/share'
-import ShareLink from '../share-link/share-link'
+import ShareLink from '../../ui/share-link'
 import s from './share.module.css'
 
 const SYSTEMS_DATA = [

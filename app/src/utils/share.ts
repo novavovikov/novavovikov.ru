@@ -1,3 +1,4 @@
+/** List of social systems */
 export enum SocialSystem {
   facebook = 'facebook',
   twitter = 'twitter',
@@ -7,11 +8,17 @@ export enum SocialSystem {
   telegram = 'telegram'
 }
 
+/** Common ShareParams */
 export interface ShareParams {
+  /** Url your page */
   url: string
+  /** Description about page */
   text: string
+  /** Page images */
   image?: string
+  /** Name of users (used in twitter only)*/
   via?: string
+  /** Tags */
   hashTags?: string[]
 }
 
@@ -98,7 +105,7 @@ export class Share {
     return `?${query.toString()}`
   }
 
-  get(system: SocialSystem): string {
+  public get(system: SocialSystem): string {
     const url = Share.sitesLinks[system]
     const queryParams = this.paramsToQueryKeys(system)
     const query = this.objectToGetParams(queryParams)

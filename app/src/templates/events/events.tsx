@@ -1,6 +1,6 @@
 import { PageProps } from 'gatsby'
 import React from 'react'
-import Page from '../../components/page'
+import Page from '../../ui/page'
 import { EventType } from '../../typings/event'
 import Event from '../../components/event/event'
 import Map from '../../components/map'

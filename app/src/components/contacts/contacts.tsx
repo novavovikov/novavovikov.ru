@@ -5,7 +5,7 @@ import GithubIcon from './icons/github.svg?inline'
 import MailIcon from './icons/mail.svg?inline'
 import TelegramIcon from './icons/telegram.svg?inline'
 import s from './contacts.module.css'
-import ExternalLink from '../external-link'
+import ExternalLink from '../../ui/external-link'
 
 const SOCIAL_ICONS = {
   twitter: TwitterIcon,

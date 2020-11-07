@@ -4,7 +4,7 @@ const isToday = require('date-fns/isToday')
 const startOfToday = require('date-fns/startOfToday')
 const { LocationInfo } = require(`./location-info`)
 
-const FILE_PATH = path.resolve(__dirname, '../static', 'location-info.json')
+const FILE_PATH = path.resolve(__dirname, '../../static', 'location-info.json')
 const FIELDS = ['annotations.flag', 'geometry']
 const INITIAL_SCHEMA = ['url', 'location', 'title', 'startDate', 'endDate']
 

@@ -10,10 +10,6 @@
   --font-xxl: 2.2rem;
   --font-3xl: 3rem;
 
-  @media only screen and (max-width: 670px) {
-
-  }
-
   --gap: 20px;
 
   --radius: 6px;
@@ -22,4 +18,7 @@
 
   --transition-f: 0.15s;
   --transition-m: 0.25s;
+  --transition-s: 0.4s;
+
+  --z-popup: 100;
 }

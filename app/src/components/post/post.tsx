@@ -2,7 +2,7 @@ import React from 'react'
 import { ArticleInfo } from '../../typings/markdown'
 import Duration from '../duration'
 import Img from 'gatsby-image'
-import ExternalLink from '../external-link'
+import ExternalLink from '../../ui/external-link'
 import ShareMenu from '../share-menu'
 import s from './post.module.css'
 import Tags from '../tags/tags'
@@ -26,7 +26,6 @@ export default function Post(props: Props) {
         <div>
           <ExternalLink
             href={props.githubLink}
-            target="_blank"
             className={s.Post__edit}
             title="Редактировать на GitHub">
             <span className={s.Post__editIcon}>🖊️</span>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql, Link, PageProps } from 'gatsby'
 import { AllMarkdownRemark, Site } from '../../typings/markdown'
-import Page from '../../components/page'
+import Page from '../../ui/page'
 import Articles from '../../components/articles'
 import SidebarBlock from '../../components/sidebar-block'
 import Contacts from '../../components/contacts'
@@ -12,6 +12,13 @@ import { QUERY_PARAM } from '../../constants/queryParams'
 import { filterArticles } from '../../utils/articles'
 import { pluralizeText } from '../../utils/pluralizeText'
 import s from './main.module.css'
+import FeedbackForm from '../../components/feedback-form'
+import Popup from '../../components/popup'
+import {
+  addToUrlParams,
+  deleteFromUrlParams,
+  hasToUrlParams
+} from '../../utils/urlParams'
 
 interface Data {
   site: Site
@@ -22,7 +29,8 @@ interface PageContext {
   tags: string[]
 }
 
-export default function MainPage (props: PageProps<Data, PageContext>) {
+export default function MainPage(props: PageProps<Data, PageContext>) {
+  const { pathname, search } = props.location
   const { tags } = props.pageContext
   const { allMarkdownRemark, site } = props.data
 
@@ -35,6 +43,20 @@ export default function MainPage (props: PageProps<Data, PageContext>) {
   })
 
   const articlesCount = articles.length
+  const feedbackUrl = addToUrlParams(QUERY_PARAM.popup, 'feedback', {
+    search,
+    prefix: pathname
+  })
+
+  const returnToPage = React.useCallback(async () => {
+    const url = deleteFromUrlParams(QUERY_PARAM.popup, {
+      search,
+      prefix: pathname
+    })
+
+    await props.navigate(url)
+  }, [search, pathname])
+
   const title = React.useMemo(() => {
     if (articlesCount === 0) {
       return 'Не найдено ни одной статьи 😔'
@@ -59,7 +81,7 @@ export default function MainPage (props: PageProps<Data, PageContext>) {
     <Page title={title}>
       <div className={s.Main}>
         <div className={s.Content}>
-          <Articles articles={articles}/>
+          <Articles articles={articles} />
         </div>
         <div className={s.Sidebar}>
           <SidebarBlock title="События" icon="📅">
@@ -81,26 +103,34 @@ export default function MainPage (props: PageProps<Data, PageContext>) {
             title="Контакты"
             icon="📟"
             aside={
-              false && <Link to="/about" className={s.SidebarAside__link}>
-                Обо мне
-              </Link>
+              null && (
+                <Link to="/about" className={s.SidebarAside__link}>
+                  Обо мне
+                </Link>
+              )
             }>
-            <Contacts data={site.siteMetadata.social}/>
+            <Contacts data={site.siteMetadata.social} />
           </SidebarBlock>
 
           {tags.length > 0 && (
             <SidebarBlock title="Теги" icon="#️⃣">
-              <Tags tags={tags}/>
+              <Tags tags={tags} />
             </SidebarBlock>
           )}
 
-          {false && (
-            <div className={s.Links}>
-              <Link to="#" className={s.SidebarAside__link}>
+          <div className={s.Links}>
+            {false && (
+              <Link to={feedbackUrl} className={s.SidebarAside__link}>
                 Обратная связь
               </Link>
-            </div>
-          )}
+            )}
+
+            <Popup
+              open={hasToUrlParams(QUERY_PARAM.popup, 'feedback', { search })}
+              onClose={returnToPage}>
+              <FeedbackForm />
+            </Popup>
+          </div>
         </div>
       </div>
     </Page>

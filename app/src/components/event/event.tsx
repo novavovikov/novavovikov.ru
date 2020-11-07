@@ -1,5 +1,5 @@
 import React from 'react'
-import ExternalLink from '../external-link'
+import ExternalLink from '../../ui/external-link'
 import format from 'date-fns/format'
 import s from './event.module.css'
 

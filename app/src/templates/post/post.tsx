@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql, PageProps } from 'gatsby'
 import { PostData, PostPageContext } from '../../typings/post'
-import Page from '../../components/page'
+import Page from '../../ui/page'
 import Post from '../../components/post'
 import { getPostImageUrl } from './utils'
 import PostPreview from '../../components/post-preview'

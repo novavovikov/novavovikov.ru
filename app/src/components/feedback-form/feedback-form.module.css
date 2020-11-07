@@ -1,0 +1,11 @@
+.FeedbackForm {
+  width: 400px;
+
+  &__title {
+    margin: 0 0 20px;
+  }
+
+  &__row {
+    margin: 0 0 10px;
+  }
+}
