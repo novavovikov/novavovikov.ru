@@ -1,11 +1,13 @@
 import { PageProps } from 'gatsby'
 import React from 'react'
+import parseISO from 'date-fns/parseISO'
 import Page from '../../ui/page'
 import { EventType } from '../../typings/event'
 import Event from '../../components/event/event'
 import Map from '../../components/map'
 import { Coordinates } from '../../components/map/map'
 import s from './events.module.css'
+import { parse } from 'date-fns'
 
 interface PageContext {
   name: String
@@ -34,8 +36,8 @@ export default function FrontendEvents(props: PageProps<{}, PageContext>) {
               key={ndx}
               {...event}
               flag={event.locationData.flag}
-              startDate={new Date(event.startDate)}
-              endDate={new Date(event.endDate)}
+              startDate={getDateObject(event.startDate)!}
+              endDate={getDateObject(event.endDate)}
             />
           ))}
         </div>
@@ -45,4 +47,14 @@ export default function FrontendEvents(props: PageProps<{}, PageContext>) {
       </div>
     </Page>
   )
+}
+
+function getDateObject(date: string | null) {
+  if (!date) {
+    return null
+  }
+
+  const d = new Date(date)
+
+  return new Date(d.getTime() + d.getTimezoneOffset() * 60 * 1000)
 }

@@ -3,7 +3,7 @@ import cn from 'classnames'
 import ReactDOM from 'react-dom'
 import s from './popup.module.css'
 
-const bodyNode = document.querySelector('body')
+const bodyNode = document && document.querySelector('body')
 
 interface Props extends React.HTMLAttributes<HTMLDivElement> {
   open: boolean

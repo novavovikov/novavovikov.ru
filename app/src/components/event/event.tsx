@@ -1,6 +1,7 @@
 import React from 'react'
 import ExternalLink from '../../ui/external-link'
-import format from 'date-fns/format'
+import { getGoogleCalendarLink } from '../../utils/calendar-event'
+import DateTime from './date-time'
 import s from './event.module.css'
 
 interface Props {
@@ -9,22 +10,11 @@ interface Props {
   flag: Nulled<string>
   location: string
   startDate: Date
-  endDate: Date
+  endDate: Date | null
 }
 
 export default function Event(props: Props) {
   const { url, title, flag, location, startDate, endDate } = props
-
-  const dateParams: [string, Intl.DateTimeFormatOptions] = [
-    'ru-RU',
-    {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
-    }
-  ]
 
   return (
     <div className={s.Event}>
@@ -37,8 +27,9 @@ export default function Event(props: Props) {
         </div>
       </div>
       <div className={s.Event__dates}>
-        с <b>{startDate.toLocaleDateString(...dateParams)}</b> по{' '}
-        <b>{endDate.toLocaleDateString(...dateParams)}</b>
+        <DateTime date={startDate} />
+        <DateTime date={endDate} prepend=" — " />
+
         <div className={s.Event__calendar}>
           📅{' '}
           <ExternalLink href={getGoogleCalendarLink(props)}>
@@ -48,19 +39,4 @@ export default function Event(props: Props) {
       </div>
     </div>
   )
-}
-
-function getGoogleCalendarLink(event: Props) {
-  const { url, title, startDate, endDate, location } = event
-
-  const gUrl = new URL('https://www.google.com/calendar/render?action=TEMPLATE')
-  const start = format(startDate, "yyyyMMdd'T'HHmmss")
-  const end = format(endDate, "yyyyMMdd'T'HHmmss")
-
-  gUrl.searchParams.append('dates', `${start}/${end}`)
-  gUrl.searchParams.append('text', title)
-  gUrl.searchParams.append('details', url)
-  gUrl.searchParams.append('location', location)
-
-  return gUrl.toString()
 }

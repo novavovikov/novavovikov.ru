@@ -35,6 +35,6 @@ export interface EventType {
   title: string
   location: string
   locationData: LocationData
-  startDate: Date
-  endDate: Date
+  startDate: string
+  endDate: string | null
 }
