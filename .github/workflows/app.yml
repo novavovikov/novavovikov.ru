@@ -29,8 +29,7 @@ jobs:
         run: |
           export DOCKER_HOST=ssh://${{ secrets.PROD_USER }}@${{ secrets.PROD_HOST }}:${{ secrets.PROD_PORT }}
 
-          docker-compose stop
-          docker volume rm $(docker volume ls -q)
+          docker-compose down -v
 
           docker-compose pull
           docker-compose up -d
