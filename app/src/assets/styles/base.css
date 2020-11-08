@@ -65,6 +65,15 @@
     line-height: 1.125;
   }
 
+  h1 .anchor svg,
+  h2 .anchor svg,
+  h3 .anchor svg,
+  h4 .anchor svg,
+  h5 .anchor svg,
+  h6 .anchor svg {
+    fill: var(--c-accent);
+  }
+
   .icon {
     fill: var(--c-icon);
 
