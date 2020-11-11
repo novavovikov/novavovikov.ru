@@ -2,20 +2,8 @@ version: '3.7'
 
 services:
   app:
-    build: app
-    volumes:
-      - public:/app/public
-
-  proxy:
-    build: proxy
-    volumes:
-      - public:/var/www/novavovikov.ru
-    ports:
-      - 80:80
-      - 443:443
+    build: .
     restart: on-failure
-    depends_on:
-      - app
-
-volumes:
-  public:
+    ports:
+      - 1234:80
+      - 3214:443

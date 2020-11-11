@@ -18,20 +18,37 @@ jobs:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
           ssh-host: ${{ secrets.PROD_HOST }}
 
+      - name: Install Node.js
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: 15
+
+      - name: Install dependencies
+        uses: bahmutov/npm-install@v1
+
+      - name: Build app
+        run: npm run build
+
+      - name: Docker login
+        uses: azure/docker-login@v1
+        with:
+          login-server: docker.pkg.github.com
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Build images
+        run: |
+          docker-compose build
+          docker-compose push
+
+      - name: Deploy
         env:
           GATSBY_GITHUB_SERVER_URL: $GITHUB_SERVER_URL
           GATSBY_GITHUB_REPOSITORY: $GITHUB_REPOSITORY
         run: |
-          docker-compose build --no-cache
-          docker-compose push
-      - name: Deploy
-        run: |
           export DOCKER_HOST=ssh://${{ secrets.PROD_USER }}@${{ secrets.PROD_HOST }}:${{ secrets.PROD_PORT }}
 
-          docker-compose down -v
-
           docker-compose pull
-          docker-compose up -d
+          docker-compose up --force-recreate -d
 
           unset DOCKER_HOST

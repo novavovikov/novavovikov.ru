@@ -107,8 +107,7 @@ module.exports = {
         theme_color: `#0366d6`,
         display: `minimal-ui`,
         icon: `static/logo.png`,
-        theme_color_in_head: false,
-        orientation: 'portrait-primary'
+        theme_color_in_head: false
       }
     },
     {
