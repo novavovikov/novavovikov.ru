@@ -37,6 +37,7 @@
     font-size: var(--font-xxs);
     color: var(--c-accent);
     text-decoration: underline;
+    padding: 0;
     border: none;
 
     &:hover {
