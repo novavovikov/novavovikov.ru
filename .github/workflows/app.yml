@@ -48,6 +48,8 @@ jobs:
         run: |
           export DOCKER_HOST=ssh://${{ secrets.PROD_USER }}@${{ secrets.PROD_HOST }}:${{ secrets.PROD_PORT }}
 
+          docker-compose down --rmi all -v --remove-orphans
+
           docker-compose pull
           docker-compose up --force-recreate -d
 
