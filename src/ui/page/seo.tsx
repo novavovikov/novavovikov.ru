@@ -39,11 +39,12 @@ export default function SEO({
   const { siteMetadata } = useStaticQuery(query).site
   const { theme } = useThemeContext()
 
-  const url = `${siteMetadata.siteUrl}${slug}`
+  const metaUrl = `${siteMetadata.siteUrl}${slug}`
+  const metaTitle = title || siteMetadata.title
   const metaDescription = description || siteMetadata.description
   const metaImage = image ? `${siteMetadata.siteUrl}/${image}` : null
 
-  const metaTitle = React.useMemo(() => {
+  const metaTitleProps = React.useMemo(() => {
     if (title) {
       return {
         titleTemplate: `%s — ${siteMetadata.title.toLowerCase()} — A blog by Vladimir Novikov 🌈`,
@@ -54,20 +55,10 @@ export default function SEO({
     return { title: `${siteMetadata.title} — A blog by Vladimir Novikov 🌈` }
   }, [title, siteMetadata.title])
 
-  const defaultMeta = [
-    { name: 'description', content: metaDescription },
-    { property: 'og:url', content: url },
-    { property: 'og:title', content: title || siteMetadata.title },
-    { property: 'og:description', content: metaDescription },
-    { name: 'twitter:card', content: 'summary' },
-    { name: 'twitter:creator', content: siteMetadata.social.twitter },
-    { name: 'twitter:title', content: title || siteMetadata.title },
-    { name: 'twitter:description', content: metaDescription }
-  ]
-
   const mediaMeta = React.useMemo(() => {
     if (metaImage) {
       return [
+        { itemprop: 'image', content: metaImage },
         { property: 'og:image', content: metaImage },
         { name: 'twitter:image', content: metaImage }
       ]
@@ -76,10 +67,47 @@ export default function SEO({
     return []
   }, [metaImage])
 
+  const defaultMeta = [
+    { name: 'description', content: metaDescription },
+    { name: 'author', content: siteMetadata.author },
+
+    // Schema.org markup for Google+
+    { itemprop: 'name', content: siteMetadata.author },
+    { itemprop: 'description', content: metaDescription },
+
+    // Twitter Card data
+    { name: 'twitter:creator', content: siteMetadata.author },
+    { name: 'twitter:card', content: 'product' },
+    { name: 'twitter:site', content: metaUrl },
+    { name: 'twitter:title', content: metaTitle },
+    { name: 'twitter:description', content: metaDescription },
+
+    // Open Graph data
+    { property: 'og:type', content: 'article' },
+    { property: 'og:url', content: metaUrl },
+    { property: 'og:title', content: metaTitle },
+    { property: 'og:description', content: metaDescription },
+
+    // Application params
+    { name: 'msapplication-tooltip', content: metaTitle },
+    { name: 'msapplication-starturl', content: `${metaUrl}?pinned=true` },
+    { name: 'msapplication-tap-highlight', content: 'no' },
+    { name: 'mobile-web-app-capable', content: 'yes' },
+    { name: 'application-name', content: siteMetadata.author },
+    { name: 'apple-mobile-web-app-capable', content: 'yes' },
+    {
+      name: 'apple-mobile-web-app-status-bar-style',
+      content: 'black-translucent'
+    },
+    { name: 'apple-mobile-web-app-title', content: metaTitle },
+    { name: 'msapplication-TileColor', content: '#0366d6' },
+    { name: 'theme-color', content: '#0366d6' }
+  ]
+
   return (
     <Helmet
       htmlAttributes={{ lang, ['data-theme']: theme }}
-      {...metaTitle}
+      {...metaTitleProps}
       meta={[...defaultMeta, ...mediaMeta, ...meta]}
     />
   )

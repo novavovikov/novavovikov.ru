@@ -1,13 +1,13 @@
 import React from 'react'
 import { Theme, ThemeContext } from './context'
-
-const initialTheme =
-  typeof window === `undefined`
-    ? 'dark'
-    : (localStorage.getItem('theme') as Theme) ?? 'dark'
+import { DEFAULT_THEME } from '../../utils/theme'
 
 export default function ThemeProvider({ children }) {
-  const [theme, onChangeTheme] = React.useState<Theme>(initialTheme)
+  const [theme, onChangeTheme] = React.useState<Theme>(
+    typeof window === `undefined`
+      ? DEFAULT_THEME
+      : (localStorage.getItem('theme') as Theme) ?? DEFAULT_THEME
+  )
   const switchTheme = React.useCallback(() => {
     const updatedTheme = theme === 'light' ? 'dark' : 'light'
 

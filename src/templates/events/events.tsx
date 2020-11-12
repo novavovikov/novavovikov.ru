@@ -1,13 +1,11 @@
 import { PageProps } from 'gatsby'
 import React from 'react'
-import parseISO from 'date-fns/parseISO'
 import Page from '../../ui/page'
 import { EventType } from '../../typings/event'
 import Event from '../../components/event/event'
 import Map from '../../components/map'
 import { Coordinates } from '../../components/map/map'
 import s from './events.module.css'
-import { parse } from 'date-fns'
 
 interface PageContext {
   name: String
@@ -31,6 +29,10 @@ export default function FrontendEvents(props: PageProps<{}, PageContext>) {
       }}>
       <div className={s.Events__content}>
         <div className={s.Events__list}>
+          {events.length === 0 && (
+            <div>К сожалению, мы не нашли предстоящих событий 😔</div>
+          )}
+
           {events.map((event, ndx) => (
             <Event
               key={ndx}
@@ -41,9 +43,12 @@ export default function FrontendEvents(props: PageProps<{}, PageContext>) {
             />
           ))}
         </div>
-        <div className={s.Events__map}>
-          <Map coordinates={coordinates} />
-        </div>
+
+        {events.length > 0 && (
+          <div className={s.Events__map}>
+            <Map coordinates={coordinates} />
+          </div>
+        )}
       </div>
     </Page>
   )

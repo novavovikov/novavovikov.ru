@@ -34,6 +34,8 @@
 
 .SidebarAside {
   display: grid;
+  font-size: var(--font-xs);
+  white-space: pre-line;
   grid-gap: var(--gap);
 
   @media only screen and (max-width: 760px) {

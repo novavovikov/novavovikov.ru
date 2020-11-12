@@ -11,13 +11,12 @@
     height: 40px;
     background: none;
     font-size: 1.3333em;
-    background: var(--c-accent);
     border: 1px solid var(--c-border);
     box-shadow: var(--shadow-main);
     border-radius: var(--radius);
 
     &:hover {
-      background: var(--c-accent-secondary);
+      background: var(--c-accent);
     }
   }
 

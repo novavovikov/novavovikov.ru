@@ -27,11 +27,13 @@ interface Data {
 
 interface PageContext {
   tags: string[]
+  frontendEventsCount: number
+  kotlinEventsCount: number
 }
 
 export default function MainPage(props: PageProps<Data, PageContext>) {
   const { pathname, search } = props.location
-  const { tags } = props.pageContext
+  const { tags, frontendEventsCount, kotlinEventsCount } = props.pageContext
   const { allMarkdownRemark, site } = props.data
 
   const [tag] = useQueryParam<string>(QUERY_PARAM.tag)
@@ -64,7 +66,7 @@ export default function MainPage(props: PageProps<Data, PageContext>) {
 
     const resultText = pluralizeText(articlesCount, {
       one: 'статья',
-      two: 'статьи',
+      few: 'статьи',
       other: 'статей'
     })
 
@@ -86,19 +88,25 @@ export default function MainPage(props: PageProps<Data, PageContext>) {
         <div className={s.Sidebar}>
           <SidebarBlock title="События" icon="📅">
             <div className={s.SidebarAside}>
+              {frontendEventsCount === 0 && kotlinEventsCount === 0 && (
+                <>Мы не нашли {'\n'}предстоящих событий 😔</>
+              )}
+
               <EventsBlock
                 to="events/frontend"
+                count={frontendEventsCount}
                 title="Frontend"
                 img="/frontend-events.jpeg"
               />
+
               <EventsBlock
                 to="events/kotlin"
+                count={kotlinEventsCount}
                 title="Kotlin"
                 img="/kotlin-events.png"
               />
             </div>
           </SidebarBlock>
-
           {tags.length > 0 && (
             <SidebarBlock title="Теги" icon="#️⃣">
               <Tags tags={tags} />

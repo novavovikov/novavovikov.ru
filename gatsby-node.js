@@ -1,8 +1,7 @@
 const path = require(`path`)
-const axios = require('axios')
-const { parseStringPromise } = require('xml2js')
 const { createFilePath } = require(`gatsby-source-filesystem`)
-const { getEventsWithLocationsData } = require(`./modules/event-locations`)
+const { getFrontendEvents } = require(`./modules/events/frontend-events`)
+const { getKotlinEvents } = require(`./modules/events/kotlin-events`)
 
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions
@@ -41,6 +40,28 @@ exports.createPages = async ({ actions, graphql }) => {
   const posts = result.data.allMarkdownRemark.edges
   const postsLastNdx = posts.length - 1
 
+  // Frontend events
+  const frontendEvents = await getFrontendEvents()
+  createPage({
+    path: 'events/frontend',
+    component: path.resolve(`src/templates/events/events.tsx`),
+    context: {
+      name: 'Frontend',
+      events: frontendEvents
+    }
+  })
+
+  // Kotlin events
+  const kotlinEvents = await getKotlinEvents()
+  createPage({
+    path: 'events/kotlin',
+    component: path.resolve(`src/templates/events/events.tsx`),
+    context: {
+      name: 'Kotlin',
+      events: kotlinEvents
+    }
+  })
+
   // Main page
   const allTags = posts.reduce((res, { node }) => {
     if (node.frontmatter.tags) {
@@ -55,7 +76,12 @@ exports.createPages = async ({ actions, graphql }) => {
   createPage({
     path: '/',
     component: path.resolve('./src/templates/main/main.tsx'),
-    context: { tags: Array.from(allTags) }
+    context: {
+      tags: Array.from(allTags),
+
+      frontendEventsCount: frontendEvents.length,
+      kotlinEventsCount: kotlinEvents.length
+    }
   })
 
   // Post page
@@ -89,56 +115,6 @@ exports.createPages = async ({ actions, graphql }) => {
       }
     })
   })
-
-  // Frontend events
-  await axios
-    .get('https://web-standards.ru/calendar.json', {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(async ({ data }) => {
-      createPage({
-        path: 'events/frontend',
-        component: path.resolve(`src/templates/events/events.tsx`),
-        context: {
-          name: 'Frontend',
-          events: await getEventsWithLocationsData(data, {
-            url: 'description',
-            title: 'summary',
-            startDate: 'start',
-            endDate: 'end'
-          })
-        }
-      })
-    })
-
-  // Kotlin events
-  await axios
-    .get(
-      'https://raw.githubusercontent.com/JetBrains/kotlin-web-site/master/data/events.xml',
-      {
-        headers: {
-          'Content-Type': 'text/xml'
-        }
-      }
-    )
-    .then(async ({ data }) => {
-      const { events } = await parseStringPromise(data, {
-        mergeAttrs: true,
-        trim: true,
-        explicitArray: false
-      })
-
-      createPage({
-        path: 'events/kotlin',
-        component: path.resolve(`src/templates/events/events.tsx`),
-        context: {
-          name: 'Kotlin',
-          events: await getEventsWithLocationsData(events.event)
-        }
-      })
-    })
 }
 
 exports.onCreateNode = ({ node, actions: { createNodeField }, getNode }) => {

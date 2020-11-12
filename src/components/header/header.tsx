@@ -37,7 +37,7 @@ export default function Header() {
               className={s.Header__theme}
               title={theme === 'light' ? 'Тёмная тема' : 'Светлая тема'}
               onClick={switchTheme}>
-              {theme === 'light' ? '🌒' : '🌤️'}
+              {theme === 'light' ? '🌚' : '🌞'}
             </button>
           </div>
         </div>

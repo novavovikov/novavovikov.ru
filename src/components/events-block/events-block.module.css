@@ -47,6 +47,21 @@
     }
   }
 
+  &__count {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: var(--c-gray);
+    font-size: var(--font-xxs);
+    white-space: nowrap;
+    padding: 5px 10px;
+    z-index: 2;
+
+    @media only screen and (max-width: 670px) {
+      font-size: 0.75em;
+    }
+  }
+
   &__img {
     position: absolute;
     left: 0;
