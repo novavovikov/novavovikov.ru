@@ -29,13 +29,6 @@ jobs:
       - name: Build app
         run: npm run build
 
-      - name: Docker login
-        uses: azure/docker-login@v1
-        with:
-          login-server: docker.pkg.github.com
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Build images
         run: |
           docker-compose build

@@ -5,5 +5,5 @@ services:
     build: .
     restart: on-failure
     ports:
-      - 1234:80
-      - 3214:443
+      - 80:80
+      - 443:443
