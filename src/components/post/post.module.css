@@ -67,7 +67,7 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    padding: 5px 60px;
+    padding: 5px 60px 0;
     background: inherit;
     z-index: 10;
 

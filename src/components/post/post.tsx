@@ -6,6 +6,7 @@ import ExternalLink from '../../ui/external-link'
 import ShareMenu from '../share-menu'
 import s from './post.module.css'
 import Tags from '../tags/tags'
+import PageScrollStatus from '../../ui/page-scroll-status'
 
 interface Props {
   postLink: string
@@ -42,6 +43,7 @@ export default function Post(props: Props) {
         />
 
         <ShareMenu url={props.postLink} text={title} image={coverFluid?.src} />
+        <PageScrollStatus />
       </div>
 
       {coverFluid && (

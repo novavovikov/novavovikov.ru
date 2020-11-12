@@ -6,7 +6,7 @@ import { QUERY_PARAM } from '../../constants/queryParams'
 import s from './tags.module.css'
 
 interface Props {
-  limit: number
+  limit?: number
   tags: string[]
 }
 
