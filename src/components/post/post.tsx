@@ -16,7 +16,7 @@ interface Props {
 
 export default function Post(props: Props) {
   const { html, timeToRead } = props.article
-  const { title, date, cover, tags } = props.article.frontmatter
+  const { title, description, date, cover, tags } = props.article.frontmatter
   const coverFluid = cover?.childImageSharp.fluid
 
   return (
@@ -42,7 +42,12 @@ export default function Post(props: Props) {
           timeToRead={timeToRead}
         />
 
-        <ShareMenu url={props.postLink} text={title} image={coverFluid?.src} />
+        <ShareMenu
+          url={props.postLink}
+          title={title}
+          description={description}
+          image={coverFluid?.src}
+        />
         <PageScrollStatus />
       </div>
 

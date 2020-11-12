@@ -12,8 +12,10 @@ export enum SocialSystem {
 export interface ShareParams {
   /** Url your page */
   url: string
+  /** Title */
+  title: string
   /** Description about page */
-  text: string
+  description: string
   /** Page images */
   image?: string
   /** Name of users (used in twitter only)*/
@@ -37,12 +39,12 @@ export class Share {
   static queryKeys = {
     [SocialSystem.facebook]: {
       u: 'url',
-      quote: 'text',
+      quote: 'title',
       hashTag: 'hashTags'
     },
     [SocialSystem.twitter]: {
       url: 'url',
-      text: 'text',
+      text: 'title',
       via: 'via',
       hashtags: 'hashTags'
     },
@@ -51,17 +53,17 @@ export class Share {
     },
     [SocialSystem.reddit]: {
       url: 'url',
-      title: 'text'
+      title: 'title'
     },
     [SocialSystem.vk]: {
       url: 'url',
-      title: 'text',
+      title: 'title',
       description: 'description',
       image: 'image'
     },
     [SocialSystem.telegram]: {
       url: 'url',
-      title: 'text'
+      title: 'title'
     }
   }
 

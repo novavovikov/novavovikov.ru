@@ -42,11 +42,11 @@
 
   &__link {
     text-decoration: none;
-    font-size: var(--font-xxs);
   }
 }
 
 .Links {
   text-align: right;
+  font-size: var(--font-xxs);
   margin-top: -10px;
 }

@@ -99,6 +99,12 @@ export default function MainPage(props: PageProps<Data, PageContext>) {
             </div>
           </SidebarBlock>
 
+          {tags.length > 0 && (
+            <SidebarBlock title="Теги" icon="#️⃣">
+              <Tags tags={tags} />
+            </SidebarBlock>
+          )}
+
           <SidebarBlock
             title="Контакты"
             icon="📟"
@@ -111,12 +117,6 @@ export default function MainPage(props: PageProps<Data, PageContext>) {
             }>
             <Contacts data={site.siteMetadata.social} />
           </SidebarBlock>
-
-          {tags.length > 0 && (
-            <SidebarBlock title="Теги" icon="#️⃣">
-              <Tags tags={tags} />
-            </SidebarBlock>
-          )}
 
           <div className={s.Links}>
             {false && (
