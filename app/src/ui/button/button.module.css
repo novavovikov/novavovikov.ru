@@ -22,9 +22,20 @@
     }
   }
 
-  &_solid {
+  &_blue {
     color: var(--c-white);
     background: var(--c-accent);
+
+    &:hover {
+      color: var(--c-white);
+      background: var(--c-accent-secondary);
+    }
+  }
+
+  &_gray {
+    color: var(--c-white);
+    background: #5a5a5a;
+    box-shadow: var(--shadow-secondary);
 
     &:hover {
       color: var(--c-white);

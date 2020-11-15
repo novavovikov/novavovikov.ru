@@ -1,10 +1,6 @@
 .Header {
   box-shadow: var(--shadow-main);
 
-  &__ghlink {
-    margin: 0 10px;
-  }
-
   &__logo {
     display: inline-flex;
   }

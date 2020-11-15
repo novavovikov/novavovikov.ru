@@ -4,7 +4,7 @@ import DefaultComponent, { DefaultComponentProps } from '../default-component'
 import s from './button.module.css'
 
 interface Props {
-  theme?: 'solid' | 'transparent'
+  theme?: 'blue' | 'gray' | 'transparent'
 }
 
 export default function Button<Type extends React.ElementType = 'button'>(
@@ -13,7 +13,7 @@ export default function Button<Type extends React.ElementType = 'button'>(
   const {
     className,
     component = 'button',
-    theme = 'solid',
+    theme = 'blue',
     ...restProps
   } = props
 
@@ -23,7 +23,8 @@ export default function Button<Type extends React.ElementType = 'button'>(
       className={cn(
         s.Button,
         {
-          [s.Button_solid]: theme === 'solid',
+          [s.Button_blue]: theme === 'blue',
+          [s.Button_gray]: theme === 'gray',
           [s.Button_transparent]: theme === 'transparent'
         },
         className

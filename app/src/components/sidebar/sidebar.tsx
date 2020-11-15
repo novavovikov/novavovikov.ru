@@ -15,6 +15,9 @@ import {
 } from '../../utils/urlParams'
 import { QUERY_PARAM } from '../../constants/queryParams'
 import { SocialData } from '../../typings/markdown'
+import ExternalLink from '../../ui/external-link'
+import { LINKS } from '../../constants/links'
+import Button from '../../ui/button'
 import s from './sidebar.module.css'
 
 interface Props {
@@ -71,6 +74,9 @@ export default function Sidebar(props: Props) {
       </button>
 
       <div className={cn(s.Sidebar, { [s.Sidebar_opened]: isOpen })}>
+        <Button theme="gray" component={ExternalLink} href={LINKS.articles}>
+          ✍️ Написать статью
+        </Button>
         <SidebarBlock title="События" icon="📅">
           <div className={s.SidebarAside}>
             {frontendEventsCount === 0 && kotlinEventsCount === 0 && (
