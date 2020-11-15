@@ -4,6 +4,9 @@ services:
   app:
     build: .
     restart: on-failure
+    environment:
+      - GATSBY_GITHUB_SERVER_URL
+      - GATSBY_GITHUB_REPOSITORY
     ports:
       - 80:80
       - 443:443

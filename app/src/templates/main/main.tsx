@@ -1,25 +1,16 @@
 import React from 'react'
-import { graphql, Link, PageProps } from 'gatsby'
+import { graphql, PageProps } from 'gatsby'
 import { AllMarkdownRemark, Site } from '../../typings/markdown'
 import Page from '../../ui/page'
 import Articles from '../../components/articles'
-import SidebarBlock from '../../components/sidebar-block'
-import Contacts from '../../components/contacts'
-import Tags from '../../components/tags'
-import EventsBlock from '../../components/events-block'
 import { useQueryParam } from 'use-query-params'
 import { QUERY_PARAM } from '../../constants/queryParams'
 import { filterArticles } from '../../utils/articles'
 import { pluralizeText } from '../../utils/pluralizeText'
 import Banner from '../../components/banner'
-import {
-  addToUrlParams,
-  deleteFromUrlParams,
-  hasToUrlParams
-} from '../../utils/urlParams'
 import { EventType } from '../../typings/event'
-import FeedbackPopup from '../../components/feedback-popup'
 import s from './main.module.css'
+import Sidebar from '../../components/sidebar'
 
 interface Data {
   site: Site
@@ -34,7 +25,6 @@ interface PageContext {
 }
 
 export default function MainPage(props: PageProps<Data, PageContext>) {
-  const { pathname, search } = props.location
   const {
     tags,
     frontendEventsCount,
@@ -54,19 +44,6 @@ export default function MainPage(props: PageProps<Data, PageContext>) {
   })
 
   const articlesCount = articles.length
-  const feedbackUrl = addToUrlParams(QUERY_PARAM.popup, 'feedback', {
-    search,
-    prefix: pathname
-  })
-
-  const returnToPage = React.useCallback(async () => {
-    const url = deleteFromUrlParams(QUERY_PARAM.popup, {
-      search,
-      prefix: pathname
-    })
-
-    await props.navigate(url)
-  }, [search, pathname])
 
   const title = React.useMemo(() => {
     if (articlesCount === 0) {
@@ -99,58 +76,15 @@ export default function MainPage(props: PageProps<Data, PageContext>) {
             articles={articles}
           />
         </div>
-        <div className={s.Sidebar}>
-          <SidebarBlock title="События" icon="📅">
-            <div className={s.SidebarAside}>
-              {frontendEventsCount === 0 && kotlinEventsCount === 0 && (
-                <>Мы не нашли {'\n'}предстоящих событий 😔</>
-              )}
 
-              <EventsBlock
-                to="events/frontend"
-                count={frontendEventsCount}
-                title="Frontend"
-                img="/frontend-events.jpeg"
-              />
-
-              <EventsBlock
-                to="events/kotlin"
-                count={kotlinEventsCount}
-                title="Kotlin"
-                img="/kotlin-events.png"
-              />
-            </div>
-          </SidebarBlock>
-          {tags.length > 0 && (
-            <SidebarBlock title="Теги" icon="#️⃣">
-              <Tags tags={tags} />
-            </SidebarBlock>
-          )}
-
-          <SidebarBlock
-            title="Контакты"
-            icon="📟"
-            aside={
-              null && (
-                <Link to="/about" className={s.SidebarAside__link}>
-                  Обо мне
-                </Link>
-              )
-            }>
-            <Contacts data={site.siteMetadata.social} />
-          </SidebarBlock>
-
-          <div className={s.Links}>
-            <Link to={feedbackUrl} className={s.SidebarAside__link}>
-              Обратная связь
-            </Link>
-
-            <FeedbackPopup
-              open={hasToUrlParams(QUERY_PARAM.popup, 'feedback', { search })}
-              onClose={returnToPage}
-            />
-          </div>
-        </div>
+        <Sidebar
+          location={props.location}
+          socialData={site.siteMetadata.social}
+          tags={tags}
+          frontendEventsCount={frontendEventsCount}
+          kotlinEventsCount={kotlinEventsCount}
+          navigate={props.navigate}
+        />
       </div>
     </Page>
   )

@@ -46,7 +46,6 @@ jobs:
           export DOCKER_HOST=ssh://${{ secrets.PROD_USER }}@${{ secrets.PROD_HOST }}:${{ secrets.PROD_PORT }}
 
           docker-compose pull
-#          docker-compose stop
           docker-compose up --build --force-recreate -d
 
           unset DOCKER_HOST
