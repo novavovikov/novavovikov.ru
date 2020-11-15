@@ -1,0 +1,23 @@
+.PageScrollStatus {
+  position: relative;
+  width: 100%;
+  height: 3px;
+  margin-top: 2px;
+  overflow: hidden;
+  transition: var(--transition-f);
+  border-radius: var(--radius);
+
+  &__status {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background: var(--c-accent);
+  }
+
+  @media only screen and (max-width: 670px) {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+  }
+}

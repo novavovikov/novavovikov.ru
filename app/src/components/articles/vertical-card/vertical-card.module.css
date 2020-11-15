@@ -1,0 +1,70 @@
+.VCard {
+  width: 50%;
+  padding: 0 10px;
+  margin: 0 0 var(--gap);
+
+  @media only screen and (max-width: 670px) {
+    width: 100%;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    background: var(--c-bg-accent);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-main);
+  }
+
+  &__imgLink {
+    height: 200px;
+    overflow: hidden;
+    border-bottom: 1px solid var(--c-border);
+  }
+
+  &__img {
+    height: 100%;
+
+    img {
+      transition: var(--transition-m);
+    }
+
+    &:hover img {
+      transform: scale(1.05);
+    }
+  }
+
+  &__info {
+    padding: var(--gap);
+  }
+
+  &__header {
+    text-decoration: none;
+  }
+
+  &__title {
+    color: var(--c-accent);
+    transition: var(--transition-f);
+    margin: 0 0 10px;
+
+    &:hover {
+      color: var(--c-accent-secondary);
+    }
+  }
+
+  &__description {
+    font-size: var(--font-xs);
+  }
+
+  &__tags {
+    margin: auto 0 0;
+    padding: 0 var(--gap) var(--gap);
+  }
+
+  &__duration {
+    font-size: var(--font-xxs);
+    color: #999;
+    margin: 0 0 15px;
+  }
+}

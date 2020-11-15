@@ -23,11 +23,11 @@ jobs:
         with:
           node-version: 15
 
-      - name: Install dependencies
-        uses: bahmutov/npm-install@v1
-
-      - name: Build app
-        run: npm run build
+      - name: Build js
+        run: |
+          cd app
+          npm i
+          npm run build
 
       - name: Build images
         run: |
@@ -38,12 +38,15 @@ jobs:
         env:
           GATSBY_GITHUB_SERVER_URL: $GITHUB_SERVER_URL
           GATSBY_GITHUB_REPOSITORY: $GITHUB_REPOSITORY
+          MAIL_HOST: ${{ secrets.MAIL_HOST }}
+          MAIL_USER: ${{ secrets.MAIL_USER }}
+          MAIL_PASS: ${{ secrets.MAIL_PASS }}
+          MAIL_RECIPIENT: ${{ secrets.MAIL_RECIPIENT }}
         run: |
           export DOCKER_HOST=ssh://${{ secrets.PROD_USER }}@${{ secrets.PROD_HOST }}:${{ secrets.PROD_PORT }}
 
-          docker-compose down --rmi all -v --remove-orphans
-
           docker-compose pull
-          docker-compose up --force-recreate -d
+#          docker-compose stop
+          docker-compose up --build --force-recreate -d
 
           unset DOCKER_HOST

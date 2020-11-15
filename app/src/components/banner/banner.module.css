@@ -1,0 +1,70 @@
+.Banner {
+  position: relative;
+  overflow: hidden;
+  background: var(--c-bg-secondary) url('/tech-event.jpg') no-repeat center/cover;
+  background-attachment: fixed;
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, .85);
+    z-index: 2;
+  }
+
+  &__body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: var(--font-xs);
+    color: var(--c-white);
+    padding: var(--gap);
+    min-height: 260px;
+    z-index: 2;
+  }
+
+  &__label {
+    padding: 0 0 10px;
+    margin: 0 0 15px;
+    color: var(--c-gray);
+    border-bottom: 1px solid #6b6868;
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+
+  &__title {
+    font-size: var(--font-l);
+    margin: 5px 0;
+  }
+
+  &__location {
+    color: var(--c-gray);
+  }
+
+  &__interval {
+    font-size: 0.7rem;
+    margin: 10px 0 30px;
+  }
+
+  &__close {
+    background: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    font-size: var(--font-m);
+
+    &:hover {
+      color: var(--c-gray);
+    }
+  }
+}

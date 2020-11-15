@@ -1,0 +1,22 @@
+.SidebarBlock {
+  padding: 15px;
+  border-radius: var(--radius);
+  background: var(--c-bg-accent);
+  box-shadow: var(--shadow-main);
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 15px;
+  }
+
+  &__title {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: flex-start;
+    grid-gap: 6px;
+    font-weight: 700;
+    margin: 0;
+  }
+}

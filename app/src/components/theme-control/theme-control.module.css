@@ -1,0 +1,13 @@
+.ThemeControl {
+  width: 40px;
+  height: 40px;
+  background: none;
+  font-size: 1.3333em;
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius);
+
+  &:hover {
+    box-shadow: var(--shadow-main);
+    background: var(--c-accent);
+  }
+}

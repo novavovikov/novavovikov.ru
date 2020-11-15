@@ -1,0 +1,41 @@
+.Events {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-height: 100%;
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    grid-gap: var(--gap);
+
+    @media only screen and (max-width: 1000px) {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__list {
+    display: grid;
+    align-content: flex-start;
+    grid-gap: var(--gap);
+    max-height: 100%;
+    overflow: auto;
+
+    @media only screen and (max-width: 1000px) {
+      order: 2;
+    }
+  }
+
+  &__map {
+    background: var(--c-gray);
+    border: 1px solid var(--c-gray);
+    border-radius: var(--radius);
+    overflow: hidden;
+    max-width: 100%;
+
+    @media only screen and (max-width: 1000px) {
+      order: 1;
+      height: 300px;
+    }
+  }
+}

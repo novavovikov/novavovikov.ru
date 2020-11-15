@@ -1,0 +1,37 @@
+.FeedbackForm {
+  max-width: 100%;
+  width: 400px;
+
+  &__title {
+    margin: 0 0 20px;
+  }
+
+  &__row {
+    margin: 0 0 10px;
+  }
+
+  &__loading {
+    margin: 0 8px 0 0;
+    height: 10px;
+    width: 10px;
+    border-radius: var(--radius);
+    background: var(--c-bg-secondary);
+    animation: Loading 1s infinite;
+  }
+
+  &__error {
+    font-size: var(--font-xxs);
+    color: #fd5f5f;
+    margin: 0 0 var(--gap);
+  }
+}
+
+@keyframes Loading {
+  from, to {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.4);
+  }
+}

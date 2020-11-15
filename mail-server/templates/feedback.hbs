@@ -1,0 +1,13 @@
+site: <a href="https://novavovikov.ru/">novavovikov.ru</a>
+
+<p>Feedback from <b>{{#if from}}{{from}}{{else}}[unknown]{{/if}}</b></p>
+<hr/>
+
+{{#if subject}}
+  <p>
+    <b>Subject:</b> {{subject}}
+  </p>
+  <hr/>
+{{/if}}
+
+{{message}}

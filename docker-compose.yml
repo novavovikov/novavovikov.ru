@@ -7,3 +7,22 @@ services:
     ports:
       - 80:80
       - 443:443
+    networks:
+      - blog_net
+    depends_on:
+      - mail
+
+  mail:
+    build: ./mail-server
+    restart: on-failure
+    environment:
+      - MAIL_HOST
+      - MAIL_PORT
+      - MAIL_USER
+      - MAIL_PASS
+      - MAIL_RECIPIENT
+    networks:
+      - blog_net
+
+networks:
+  blog_net:
