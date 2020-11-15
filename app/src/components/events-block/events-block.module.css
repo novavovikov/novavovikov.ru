@@ -13,8 +13,8 @@
     top: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.65);
-    z-index: 1;
+    background: var(--c-blackout-light);
+    z-index: var(--z-layout-1);
   }
 
   &:hover &__img {
@@ -35,12 +35,7 @@
     font-weight: bold;
     font-size: 2em;
     transition: var(--transition-m);
-    z-index: 2;
-
-    @media only screen and (max-width: 670px) {
-      padding: 10px;
-      font-size: 1.4em;
-    }
+    z-index: var(--z-layout-2);
 
     &:hover {
       color: #fff;
@@ -55,11 +50,7 @@
     font-size: var(--font-xxs);
     white-space: nowrap;
     padding: 5px 10px;
-    z-index: 2;
-
-    @media only screen and (max-width: 670px) {
-      font-size: 0.75em;
-    }
+    z-index: var(--z-layout-2);
   }
 
   &__img {
@@ -69,7 +60,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    z-index: 0;
+    z-index: var(--z-layout-flat);
     transition: var(--transition-m);
   }
 }

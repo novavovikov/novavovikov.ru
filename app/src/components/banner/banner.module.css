@@ -11,8 +11,8 @@
     bottom: 0;
     height: 100%;
     width: 100%;
-    background: rgba(0, 0, 0, .85);
-    z-index: 2;
+    background: var(--c-blackout-dark);
+    z-index: var(--z-layout-2);
   }
 
   &__body {
@@ -26,7 +26,7 @@
     color: var(--c-white);
     padding: var(--gap);
     min-height: 260px;
-    z-index: 2;
+    z-index: var(--z-layout-2);
   }
 
   &__label {

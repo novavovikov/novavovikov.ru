@@ -1,6 +1,5 @@
 .Header {
   box-shadow: var(--shadow-main);
-  z-index: 10;
 
   &__ghlink {
     margin: 0 10px;

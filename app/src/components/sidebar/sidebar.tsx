@@ -1,7 +1,9 @@
 import React from 'react'
-import SidebarBlock from '../sidebar-block/sidebar-block'
-import EventsBlock from '../events-block/events-block'
-import Tags from '../tags/tags'
+import cn from 'classnames'
+import SidebarIcon from './icons/sidebar.svg?inline'
+import SidebarBlock from '../sidebar-block'
+import EventsBlock from '../events-block'
+import Tags from '../tags'
 import { Link } from 'gatsby'
 import { NavigateFn, WindowLocation } from '@reach/router'
 import Contacts from '../contacts/contacts'
@@ -13,7 +15,7 @@ import {
 } from '../../utils/urlParams'
 import { QUERY_PARAM } from '../../constants/queryParams'
 import { SocialData } from '../../typings/markdown'
-import s from '../../templates/main/main.module.css'
+import s from './sidebar.module.css'
 
 interface Props {
   location: WindowLocation
@@ -25,6 +27,7 @@ interface Props {
 }
 
 export default function Sidebar(props: Props) {
+  const { search, pathname } = props.location
   const {
     tags,
     socialData,
@@ -32,7 +35,8 @@ export default function Sidebar(props: Props) {
     kotlinEventsCount,
     navigate
   } = props
-  const { search, pathname } = props.location
+
+  const [isOpen, setOpenStatus] = React.useState<boolean>(false)
 
   const feedbackUrl = addToUrlParams(QUERY_PARAM.popup, 'feedback', {
     search,
@@ -48,58 +52,79 @@ export default function Sidebar(props: Props) {
     await navigate(url)
   }, [search, pathname])
 
+  const onCloseSidebar = React.useCallback(() => {
+    setOpenStatus(false)
+  }, [])
+
+  const toggleSidebar = React.useCallback(() => {
+    setOpenStatus(!isOpen)
+  }, [isOpen])
+
   return (
-    <div className={s.Sidebar}>
-      <SidebarBlock title="События" icon="📅">
-        <div className={s.SidebarAside}>
-          {frontendEventsCount === 0 && kotlinEventsCount === 0 && (
-            <>Мы не нашли {'\n'}предстоящих событий 😔</>
-          )}
+    <>
+      <button
+        className={cn(s.SidebarControl, {
+          [s.SidebarControl_active]: isOpen
+        })}
+        onClick={toggleSidebar}>
+        <SidebarIcon className="icon" />
+      </button>
 
-          <EventsBlock
-            to="events/frontend"
-            count={frontendEventsCount}
-            title="Frontend"
-            img="/frontend-events.jpeg"
-          />
+      <div className={cn(s.Sidebar, { [s.Sidebar_opened]: isOpen })}>
+        <SidebarBlock title="События" icon="📅">
+          <div className={s.SidebarAside}>
+            {frontendEventsCount === 0 && kotlinEventsCount === 0 && (
+              <>Мы не нашли {'\n'}предстоящих событий 😔</>
+            )}
 
-          <EventsBlock
-            to="events/kotlin"
-            count={kotlinEventsCount}
-            title="Kotlin"
-            img="/kotlin-events.png"
+            <EventsBlock
+              to="events/frontend"
+              count={frontendEventsCount}
+              title="Frontend"
+              img="/frontend-events.jpeg"
+            />
+
+            <EventsBlock
+              to="events/kotlin"
+              count={kotlinEventsCount}
+              title="Kotlin"
+              img="/kotlin-events.png"
+            />
+          </div>
+        </SidebarBlock>
+        {tags.length > 0 && (
+          <SidebarBlock title="Теги" icon="#️⃣">
+            <Tags tags={tags} />
+          </SidebarBlock>
+        )}
+
+        <SidebarBlock
+          title="Контакты"
+          icon="📟"
+          aside={
+            null && (
+              <Link to="/about" className={s.SidebarAside__link}>
+                Обо мне
+              </Link>
+            )
+          }>
+          <Contacts data={socialData} />
+        </SidebarBlock>
+
+        <div className={s.SidebarAside__links}>
+          <Link
+            className={s.SidebarAside__link}
+            to={feedbackUrl}
+            onClick={onCloseSidebar}>
+            Обратная связь
+          </Link>
+
+          <FeedbackPopup
+            open={hasToUrlParams(QUERY_PARAM.popup, 'feedback', { search })}
+            onClose={returnToPage}
           />
         </div>
-      </SidebarBlock>
-      {tags.length > 0 && (
-        <SidebarBlock title="Теги" icon="#️⃣">
-          <Tags tags={tags} />
-        </SidebarBlock>
-      )}
-
-      <SidebarBlock
-        title="Контакты"
-        icon="📟"
-        aside={
-          null && (
-            <Link to="/about" className={s.SidebarAside__link}>
-              Обо мне
-            </Link>
-          )
-        }>
-        <Contacts data={socialData} />
-      </SidebarBlock>
-
-      <div className={s.Links}>
-        <Link to={feedbackUrl} className={s.SidebarAside__link}>
-          Обратная связь
-        </Link>
-
-        <FeedbackPopup
-          open={hasToUrlParams(QUERY_PARAM.popup, 'feedback', { search })}
-          onClose={returnToPage}
-        />
       </div>
-    </div>
+    </>
   )
 }

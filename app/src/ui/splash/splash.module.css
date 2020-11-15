@@ -10,7 +10,7 @@
   background: var(--c-bg-main);
   visibility: visible;
   opacity: 1;
-  z-index: 999;
+  z-index: var(--z-splash);
 
   &_hidden {
     opacity: 0;

@@ -1,6 +1,10 @@
 :root {
   --c-white: #fff;
 
+  --c-blackout-light: rgba(0, 0, 0, .65);
+  --c-blackout-medium: rgba(0, 0, 0, .75);
+  --c-blackout-dark: rgba(0, 0, 0, .85);
+
   --font-xxs: 0.8rem;
   --font-xs: 0.85rem;
   --font-s: 0.9rem;
@@ -20,5 +24,13 @@
   --transition-m: 0.25s;
   --transition-s: 0.4s;
 
-  --z-popup: 100;
+  --z-overlay: -1;
+  --z-layout-flat: 0;
+  --z-layout-1: 1;
+  --z-layout-2: 2;
+  --z-controls: 10;
+  --z-sidebar: 30;
+  --z-sidebar-icon: 31;
+  --z-popup: 99;
+  --z-splash: 100;
 }

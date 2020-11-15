@@ -20,8 +20,8 @@
     top: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.65);
-    z-index: 1;
+    background: var(--c-blackout-light);
+    z-index: var(--z-layout-1);
   }
 
   &__img {
@@ -48,7 +48,7 @@
     margin: 0;
     font-weight: bold;
     transition: var(--transition-m);
-    z-index: 2;
+    z-index: var(--z-layout-2);
 
     &_inverse {
       justify-content: flex-end;

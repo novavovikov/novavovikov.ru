@@ -69,7 +69,7 @@
     justify-content: space-between;
     padding: 5px 60px 0;
     background: inherit;
-    z-index: 10;
+    z-index: var(--z-controls);
 
     @media only screen and (max-width: 670px) {
       position: relative;

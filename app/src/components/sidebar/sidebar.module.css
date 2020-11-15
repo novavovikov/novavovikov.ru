@@ -1,0 +1,91 @@
+.Sidebar {
+  position: sticky;
+  top: 20px;
+  display: grid;
+  align-content: flex-start;
+  grid-gap: var(--gap);
+
+  @media only screen and (max-width: 1000px) {
+    position: fixed;
+    right: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 100%;
+    overflow: auto;
+    background: var(--c-bg-main);
+    padding: var(--gap);
+    box-shadow: var(--shadow-main);
+    transform: translate(100%, 0);
+    transition: var(--transition-m);
+    z-index: var(--z-sidebar);
+
+    &_opened {
+      transform: translate(0);
+    }
+  }
+}
+
+.SidebarAside {
+  display: grid;
+  font-size: var(--font-xs);
+  white-space: pre-line;
+  grid-gap: var(--gap);
+
+  &__links {
+    text-align: right;
+    font-size: var(--font-xxs);
+    margin-top: -10px;
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+}
+
+.SidebarControl {
+  position: fixed;
+  display: none;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background: var(--c-gray);
+  border-radius: var(--radius);
+  transition: var(--transition-m);
+  z-index: var(--z-sidebar);
+
+  &:before {
+    content: '';
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--c-blackout-medium);
+    visibility: hidden;
+    transition: var(--transition-m);
+    opacity: 0;
+  }
+
+  &_active {
+    right: 320px;
+
+    &:before {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    svg {
+      position: relative;
+      fill: var(--c-accent);
+      z-index: var(--z-sidebar-icon);
+    }
+  }
+
+  @media only screen and (max-width: 1000px) {
+    display: block;
+  }
+}
