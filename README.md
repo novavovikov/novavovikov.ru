@@ -4,7 +4,7 @@ You can see [here](https://novavovikov.ru/)
 
 #### Run blog:
 ```shell script
-cd ./app
+cd ./blog
 npm i
 npm start
 ```
@@ -30,4 +30,4 @@ docker-compose up
 ```
 
 #### Write article:
-You can do it [here](app/articles)
+You can do it [here](blog/articles)

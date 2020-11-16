@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "My personal blog",
   "repository": {
-    "directory": "app",
+    "directory": "blog",
     "url": "https://github.com/novavovikov/novavovikov.ru"
   },
   "scripts": {

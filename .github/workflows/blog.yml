@@ -1,4 +1,4 @@
-name: App
+name: Blog
 
 on:
   push:
@@ -25,7 +25,7 @@ jobs:
 
       - name: Build js
         run: |
-          cd app
+          cd blog
           npm i
           npm run build
 
