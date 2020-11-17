@@ -12,7 +12,7 @@
     height: 100%;
     width: 100%;
     background: var(--c-blackout-dark);
-    z-index: var(--z-layout-2);
+    z-index: var(--z-layer-2);
   }
 
   &__body {
@@ -26,7 +26,7 @@
     color: var(--c-white);
     padding: var(--gap);
     min-height: 260px;
-    z-index: var(--z-layout-2);
+    z-index: var(--z-layer-2);
   }
 
   &__label {

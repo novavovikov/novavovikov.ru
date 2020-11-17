@@ -50,6 +50,7 @@
     "gatsby-transformer-sharp": "^2.5.18",
     "http-proxy-middleware": "^1.0.6",
     "lodash.get": "^4.4.2",
+    "lodash.throttle": "^4.1.1",
     "mobile-device-detect": "^0.4.3",
     "object-hash": "^2.0.3",
     "postcss": "^8.1.2",

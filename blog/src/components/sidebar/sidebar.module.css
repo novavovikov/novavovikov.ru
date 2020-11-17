@@ -27,6 +27,15 @@
   }
 }
 
+.SidebarSwipeControl {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 100%;
+  z-index: var(--z-layer-2);
+}
+
 .SidebarAside {
   display: grid;
   font-size: var(--font-xs);

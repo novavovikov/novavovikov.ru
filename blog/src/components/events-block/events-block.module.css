@@ -14,7 +14,7 @@
     width: 100%;
     height: 100%;
     background: var(--c-blackout-light);
-    z-index: var(--z-layout-1);
+    z-index: var(--z-layer-1);
   }
 
   &:hover &__img {
@@ -35,7 +35,7 @@
     font-weight: bold;
     font-size: 2em;
     transition: var(--transition-m);
-    z-index: var(--z-layout-2);
+    z-index: var(--z-layer-2);
 
     &:hover {
       color: #fff;
@@ -50,7 +50,7 @@
     font-size: var(--font-xxs);
     white-space: nowrap;
     padding: 5px 10px;
-    z-index: var(--z-layout-2);
+    z-index: var(--z-layer-2);
   }
 
   &__img {

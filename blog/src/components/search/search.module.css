@@ -16,7 +16,7 @@
     width: 20px;
     height: 20px;
     margin-top: -10px;
-    z-index: var(--z-layout-2);
+    z-index: var(--z-layer-2);
   }
 
   &__field {

@@ -18,6 +18,7 @@ import { SocialData } from '../../typings/markdown'
 import ExternalLink from '../../ui/external-link'
 import { LINKS } from '../../constants/links'
 import Button from '../../ui/button'
+import { useSidebarSwipes } from './use-sidebar-swipes'
 import s from './sidebar.module.css'
 
 interface Props {
@@ -39,7 +40,14 @@ export default function Sidebar(props: Props) {
     navigate
   } = props
 
-  const [isOpen, setOpenStatus] = React.useState<boolean>(false)
+  const {
+    sidebarRef,
+    controlRef,
+    position,
+    speed,
+    opened,
+    setOpenStatus
+  } = useSidebarSwipes()
 
   const feedbackUrl = addToUrlParams(QUERY_PARAM.popup, 'feedback', {
     search,
@@ -60,20 +68,30 @@ export default function Sidebar(props: Props) {
   }, [])
 
   const toggleSidebar = React.useCallback(() => {
-    setOpenStatus(!isOpen)
-  }, [isOpen])
+    setOpenStatus(!opened)
+  }, [opened])
+
+  const sidebarStyles =
+    position === 100
+      ? {}
+      : { transform: `translate(${position}%)`, transition: `${speed}ms` }
 
   return (
     <>
+      <div className={s.SidebarSwipeControl} ref={controlRef} />
+
       <button
         className={cn(s.SidebarControl, {
-          [s.SidebarControl_active]: isOpen
+          [s.SidebarControl_active]: opened
         })}
         onClick={toggleSidebar}>
         <SidebarIcon className="icon" />
       </button>
 
-      <div className={cn(s.Sidebar, { [s.Sidebar_opened]: isOpen })}>
+      <div
+        className={cn(s.Sidebar, { [s.Sidebar_opened]: opened })}
+        ref={sidebarRef}
+        style={sidebarStyles}>
         <Button theme="gray" component={ExternalLink} href={LINKS.articles}>
           ✍️ Написать статью
         </Button>

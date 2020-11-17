@@ -26,8 +26,8 @@
 
   --z-overlay: -1;
   --z-layout-flat: 0;
-  --z-layout-1: 1;
-  --z-layout-2: 2;
+  --z-layer-1: 1;
+  --z-layer-2: 2;
   --z-controls: 10;
   --z-sidebar: 30;
   --z-sidebar-icon: 31;
