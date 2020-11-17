@@ -1,11 +1,19 @@
 import React from 'react'
 import cn from 'classnames'
 import s from './sidebar-block.module.css'
+import DefaultComponent, {
+  DefaultComponentProps
+} from '../../ui/default-component'
 
 interface Props {
   className?: string
-  title: string
+
+  title: React.ReactNode
+  titleProps?: DefaultComponentProps<'span'>
+
   icon: string
+  iconProps?: DefaultComponentProps<'span'>
+
   aside?: React.ReactNode
   children: React.ReactNode
 }
@@ -13,7 +21,11 @@ interface Props {
 export default function SidebarBlock({
   className,
   title,
+  titleProps = {},
+
   icon,
+  iconProps = {},
+
   aside,
   children
 }: Props) {
@@ -22,7 +34,9 @@ export default function SidebarBlock({
       <div className={s.SidebarBlock__header}>
         <h4 className={s.SidebarBlock__title}>
           <span>{icon}</span>
-          <span>{title}</span>
+          <DefaultComponent component="span" {...titleProps}>
+            {title}
+          </DefaultComponent>
         </h4>
 
         {aside}

@@ -48,7 +48,7 @@ export default function Banner({ event }: Props) {
             endDate={getDateObject(event.endDate)}
           />
         </div>
-        <Button component={Link} to={`/events/${event.category}`}>
+        <Button as={Link} to={`/events/${event.category}`}>
           Спиок {event.category} событий
         </Button>
       </div>

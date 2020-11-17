@@ -92,10 +92,18 @@ export default function Sidebar(props: Props) {
         className={cn(s.Sidebar, { [s.Sidebar_opened]: opened })}
         ref={sidebarRef}
         style={sidebarStyles}>
-        <Button theme="gray" component={ExternalLink} href={LINKS.articles}>
+        <Button
+          className={s.SidebarAside__article}
+          theme="gray"
+          as={ExternalLink}
+          href={LINKS.articles}>
           ✍️ Написать статью
         </Button>
-        <SidebarBlock title="События" icon="📅">
+
+        <SidebarBlock
+          className={s.SidebarAside__events}
+          title="События"
+          icon="📅">
           <div className={s.SidebarAside}>
             {frontendEventsCount === 0 && kotlinEventsCount === 0 && (
               <>Мы не нашли {'\n'}предстоящих событий 😔</>
@@ -117,37 +125,32 @@ export default function Sidebar(props: Props) {
           </div>
         </SidebarBlock>
         {tags.length > 0 && (
-          <SidebarBlock title="Теги" icon="#️⃣">
+          <SidebarBlock className={s.SidebarAside__tags} title="Теги" icon="#️⃣">
             <Tags tags={tags} />
           </SidebarBlock>
         )}
 
         <SidebarBlock
+          className={s.SidebarAside__contacts}
           title="Контакты"
           icon="📟"
           aside={
-            null && (
-              <Link to="/about" className={s.SidebarAside__link}>
-                Обо мне
+            <>
+              <Link
+                className={s.SidebarAside__feedback}
+                to={feedbackUrl}
+                onClick={onCloseSidebar}>
+                Связаться
               </Link>
-            )
+
+              <FeedbackPopup
+                open={hasToUrlParams(QUERY_PARAM.popup, 'feedback', { search })}
+                onClose={returnToPage}
+              />
+            </>
           }>
           <Contacts data={socialData} />
         </SidebarBlock>
-
-        <div className={s.SidebarAside__links}>
-          <Link
-            className={s.SidebarAside__link}
-            to={feedbackUrl}
-            onClick={onCloseSidebar}>
-            Обратная связь
-          </Link>
-
-          <FeedbackPopup
-            open={hasToUrlParams(QUERY_PARAM.popup, 'feedback', { search })}
-            onClose={returnToPage}
-          />
-        </div>
       </div>
     </>
   )

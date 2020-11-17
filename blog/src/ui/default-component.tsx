@@ -1,7 +1,7 @@
 import React from 'react'
 
 interface CommonProps<Type extends React.ElementType> {
-  component?: Type
+  as?: Type
 }
 
 /** Default Component Props*/
@@ -15,7 +15,7 @@ export default function DefaultComponent<
   Type extends React.ElementType,
   Props = {}
 >(props: DefaultComponentProps<Type, Props>) {
-  const { component: Component = React.Fragment } = props
+  const { as: Component = React.Fragment, ...restProps } = props
 
-  return <Component {...props} />
+  return <Component {...restProps} />
 }

@@ -10,16 +10,11 @@ interface Props {
 export default function Button<Type extends React.ElementType = 'button'>(
   props: DefaultComponentProps<Type, Props>
 ) {
-  const {
-    className,
-    component = 'button',
-    theme = 'blue',
-    ...restProps
-  } = props
+  const { className, as = 'button', theme = 'blue', ...restProps } = props
 
   return (
     <DefaultComponent
-      component={component}
+      as={as}
       className={cn(
         s.Button,
         {

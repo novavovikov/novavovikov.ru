@@ -42,13 +42,24 @@
   white-space: pre-line;
   grid-gap: var(--gap);
 
-  &__links {
-    text-align: right;
-    font-size: var(--font-xxs);
-    margin-top: -10px;
+  &__article {
+    @media only screen and (max-width: 1000px) {
+      order: 1;
+    }
   }
 
-  &__link {
+  &__events {
+  }
+
+  &__tags {
+  }
+
+  &__contacts {
+  }
+
+  &__feedback {
+    font-weight: 300;
+    font-size: var(--font-xxs);
     text-decoration: none;
   }
 }
