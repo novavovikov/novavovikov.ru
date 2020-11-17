@@ -34,7 +34,7 @@ export default function SidebarBlock({
       <div className={s.SidebarBlock__header}>
         <h4 className={s.SidebarBlock__title}>
           <span>{icon}</span>
-          <DefaultComponent component="span" {...titleProps}>
+          <DefaultComponent as="span" {...titleProps}>
             {title}
           </DefaultComponent>
         </h4>
