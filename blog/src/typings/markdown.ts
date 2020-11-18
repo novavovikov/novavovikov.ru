@@ -15,6 +15,7 @@ export interface ArticleMeta {
 }
 
 export interface ArticleInfo {
+  id: string
   timeToRead: number
   frontmatter: ArticleMeta
   html?: string

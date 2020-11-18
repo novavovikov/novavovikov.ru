@@ -130,6 +130,12 @@ module.exports = {
       }
     },
     {
+      resolve: `gatsby-plugin-disqus`,
+      options: {
+        shortname: `novavovikov`
+      }
+    },
+    {
       resolve: `gatsby-plugin-feed`,
       options: {
         query: `
@@ -150,9 +156,8 @@ module.exports = {
               return allMarkdownRemark.edges.map((edge) => {
                 const siteUrl = site.siteMetadata.siteUrl
                 const postText = `
-                <div style="margin-top=55px; font-style: italic;">(Я статья опубликоана на моём сайте novavovikov.ru. <a href="${
-                  siteUrl + edge.node.fields.slug
-                }">Перейти</a>.)</div>
+                <div style="margin-top=55px; font-style: italic;">(Я статья опубликоана на моём сайте novavovikov.ru. <a href="${siteUrl +
+                  edge.node.fields.slug}">Перейти</a>.)</div>
               `
 
                 let html = edge.node.html

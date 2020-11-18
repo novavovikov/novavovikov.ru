@@ -1,4 +1,4 @@
-import { ArticleInfo } from './markdown'
+import { ArticleInfo, Site } from './markdown'
 import { PostPreviewData } from './post-preview'
 
 export interface PostImageFile {
@@ -11,6 +11,11 @@ export interface PostImageFile {
 }
 
 export interface PostData {
+  site: {
+    siteMetadata: {
+      siteUrl
+    }
+  }
   markdownRemark: ArticleInfo
   allFile: {
     nodes: PostImageFile[]

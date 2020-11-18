@@ -68,9 +68,9 @@
   position: fixed;
   display: none;
   bottom: 20px;
-  right: 20px;
-  width: 40px;
-  height: 40px;
+  right: 15px;
+  width: 36px;
+  height: 36px;
   background: var(--c-gray);
   border-radius: var(--radius);
   transition: var(--transition-m);
