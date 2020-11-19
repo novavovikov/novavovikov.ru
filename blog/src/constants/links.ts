@@ -1,7 +1,7 @@
 const ghServerUrl = process.env.GATSBY_GITHUB_SERVER_URL ?? 'https://github.com'
 const ghRepository =
   process.env.GATSBY_GITHUB_REPOSITORY ?? 'novavovikov/novavovikov.ru'
-const articles = `${ghServerUrl}/${ghRepository}/tree/master/blog/articles`
+const articles = `${ghServerUrl}/${ghRepository}/tree/master/blog`
 
 export const LINKS = {
   ghServerUrl,
