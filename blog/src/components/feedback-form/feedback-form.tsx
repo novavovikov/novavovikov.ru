@@ -3,22 +3,26 @@ import Input from '../../ui/input'
 import Textarea from '../../ui/textarea'
 import Button from '../../ui/button'
 import { useField } from '../../hooks/use-field'
+import { PopupFormProps } from '../form-popup/form-popup'
 import s from './feedback-form.module.css'
 
-interface Props {
-  isLoading?: boolean
-  hasError?: boolean
-  onSubmit: (name: string, message: string) => void
+interface Data {
+  name: string
+  message: string
 }
 
-export default function FeedbackForm({ isLoading, hasError, onSubmit }: Props) {
+export default function FeedbackForm({
+  isLoading,
+  hasError,
+  onSubmit = () => {}
+}: PopupFormProps<Data>) {
   const [name, setName] = useField('')
   const [message, setMessage] = useField('')
 
   const onSubmitForm: React.FormEventHandler = React.useCallback(
     (e) => {
       e.preventDefault()
-      onSubmit(name, message)
+      onSubmit({ name, message })
     },
     [name, message]
   )

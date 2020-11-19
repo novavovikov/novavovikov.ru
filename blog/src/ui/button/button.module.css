@@ -2,9 +2,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 5px 10px;
   line-height: 1;
-  min-height: 40px;
   font-size: var(--font-xxs);
   color: var(--c-text-main);
   text-decoration: none;
@@ -41,6 +39,20 @@
       color: var(--c-white);
       background: var(--c-accent-secondary);
     }
+  }
+
+  &_s {
+    padding: 4px 10px;
+    min-height: 24px;
+  }
+
+  &_m {
+    padding: 5px 10px;
+    min-height: 40px;
+  }
+
+  &_l {
+
   }
 
   &:active {

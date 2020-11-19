@@ -58,9 +58,11 @@
   }
 
   &__feedback {
-    font-weight: 300;
-    font-size: var(--font-xxs);
-    text-decoration: none;
+    border: 1px solid;
+
+    &:hover {
+      border-color: transparent;
+    }
   }
 }
 

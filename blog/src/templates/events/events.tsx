@@ -1,4 +1,4 @@
-import { PageProps } from 'gatsby'
+import { Link, PageProps } from 'gatsby'
 import React from 'react'
 import Page from '../../ui/page'
 import { EventType } from '../../typings/event'
@@ -7,6 +7,11 @@ import Map from '../../components/map'
 import { Coordinates } from '../../components/map/map'
 import { getDateObject } from '../../utils/date'
 import s from './events.module.css'
+import SubscribeForm from '../../components/subscribe-form'
+import FormPopup from '../../components/form-popup/form-popup'
+import { hasToUrlParams } from '../../utils/urlParams'
+import { QUERY_PARAM } from '../../constants/queryParams'
+import FeedbackForm from '../../components/feedback-form/feedback-form'
 
 interface PageContext {
   name: String
@@ -14,12 +19,21 @@ interface PageContext {
 }
 
 export default function Events(props: PageProps<{}, PageContext>) {
+  const [isOpen, setOpenStatus] = React.useState<boolean>(false)
   const { name, events } = props.pageContext
 
   const coordinates = events.reduce<Coordinates[]>((acc, { locationData }) => {
     return locationData.geometry
       ? [...acc, [locationData.geometry.lat, locationData.geometry.lng]]
       : acc
+  }, [])
+
+  const onOpenPopup = React.useCallback(() => {
+    setOpenStatus(true)
+  }, [])
+
+  const onClosePopup = React.useCallback(() => {
+    setOpenStatus(false)
   }, [])
 
   return (
@@ -33,6 +47,13 @@ export default function Events(props: PageProps<{}, PageContext>) {
           {events.length === 0 && (
             <div>К сожалению, мы не нашли предстоящих событий 😔</div>
           )}
+
+          <FormPopup
+            requestUrl="/feedback"
+            open={isOpen}
+            onClose={onClosePopup}>
+            <SubscribeForm />
+          </FormPopup>
 
           {events.map((event, ndx) => (
             <Event

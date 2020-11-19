@@ -7,7 +7,6 @@ import Tags from '../tags'
 import { Link } from 'gatsby'
 import { NavigateFn, WindowLocation } from '@reach/router'
 import Contacts from '../contacts/contacts'
-import FeedbackPopup from '../feedback-popup/feedback-popup'
 import {
   addToUrlParams,
   deleteFromUrlParams,
@@ -20,6 +19,8 @@ import { LINKS } from '../../constants/links'
 import Button from '../../ui/button'
 import { useSidebarSwipes } from './use-sidebar-swipes'
 import s from './sidebar.module.css'
+import FormPopup from '../form-popup'
+import FeedbackForm from '../feedback-form'
 
 interface Props {
   location: WindowLocation
@@ -49,19 +50,9 @@ export default function Sidebar(props: Props) {
     setOpenStatus
   } = useSidebarSwipes()
 
-  const feedbackUrl = addToUrlParams(QUERY_PARAM.popup, 'feedback', {
-    search,
-    prefix: pathname
-  })
-
-  const returnToPage = React.useCallback(async () => {
-    const url = deleteFromUrlParams(QUERY_PARAM.popup, {
-      search,
-      prefix: pathname
-    })
-
-    await navigate(url)
-  }, [search, pathname])
+  const [feedbackVisibility, setFeedbackVisibility] = React.useState<boolean>(
+    false
+  )
 
   const onCloseSidebar = React.useCallback(() => {
     setOpenStatus(false)
@@ -70,6 +61,15 @@ export default function Sidebar(props: Props) {
   const toggleSidebar = React.useCallback(() => {
     setOpenStatus(!opened)
   }, [opened])
+
+  const onCloseFeedbackForm = React.useCallback(() => {
+    setFeedbackVisibility(false)
+  }, [])
+
+  const onOpenFeedbackForm = React.useCallback(() => {
+    setFeedbackVisibility(true)
+    onCloseSidebar()
+  }, [])
 
   const sidebarStyles =
     position === 100
@@ -136,17 +136,20 @@ export default function Sidebar(props: Props) {
           icon="📟"
           aside={
             <>
-              <Link
+              <Button
+                theme="transparent"
+                size="s"
                 className={s.SidebarAside__feedback}
-                to={feedbackUrl}
-                onClick={onCloseSidebar}>
-                Связаться
-              </Link>
+                onClick={onOpenFeedbackForm}>
+                Написать
+              </Button>
 
-              <FeedbackPopup
-                open={hasToUrlParams(QUERY_PARAM.popup, 'feedback', { search })}
-                onClose={returnToPage}
-              />
+              <FormPopup
+                requestUrl="/feedback"
+                open={feedbackVisibility}
+                onClose={onCloseFeedbackForm}>
+                <FeedbackForm />
+              </FormPopup>
             </>
           }>
           <Contacts data={socialData} />
