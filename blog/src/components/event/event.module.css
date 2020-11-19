@@ -7,6 +7,10 @@
   border: 1px solid var(--c-border);
   border-radius: var(--radius);
 
+  @media only screen and (max-width: 670px) {
+    flex-direction: column;
+  }
+
   &__info {
   }
 
@@ -16,12 +20,21 @@
   &__location {
     font-size: var(--font-xs);
     color: var(--c-text-secondary);
+
+    @media only screen and (max-width: 670px) {
+      margin-top: 5px;
+    }
   }
 
   &__dates {
     font-size: var(--font-xxs);
     line-height: 2;
     text-align: right;
+
+    @media only screen and (max-width: 670px) {
+      text-align: left;
+      margin-top: 5px;
+    }
   }
 
   &__calendar {

@@ -5,6 +5,7 @@ const env =
   process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || 'development'
 
 module.exports = {
+  pathPrefix: '/',
   developMiddleware: (app) => {
     app.use(
       '/feedback',
@@ -26,7 +27,6 @@ module.exports = {
       email: 'mailto:novavovikov@gmail.com'
     }
   },
-  pathPrefix: '/',
   plugins: [
     {
       resolve: `gatsby-plugin-typescript`,
