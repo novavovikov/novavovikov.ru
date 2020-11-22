@@ -1,5 +1,8 @@
-import { Link, PageProps } from 'gatsby'
+import { PageProps } from 'gatsby'
 import React from 'react'
+import startOfToday from 'date-fns/startOfToday'
+import isAfter from 'date-fns/isAfter'
+import isToday from 'date-fns/isToday'
 import Page from '../../ui/page'
 import { EventType } from '../../typings/event'
 import Event from '../../components/event/event'
@@ -9,9 +12,8 @@ import { getDateObject } from '../../utils/date'
 import s from './events.module.css'
 import SubscribeForm from '../../components/subscribe-form'
 import FormPopup from '../../components/form-popup/form-popup'
-import { hasToUrlParams } from '../../utils/urlParams'
-import { QUERY_PARAM } from '../../constants/queryParams'
-import FeedbackForm from '../../components/feedback-form/feedback-form'
+
+const today = startOfToday()
 
 interface PageContext {
   name: String
@@ -20,7 +22,12 @@ interface PageContext {
 
 export default function Events(props: PageProps<{}, PageContext>) {
   const [isOpen, setOpenStatus] = React.useState<boolean>(false)
-  const { name, events } = props.pageContext
+  const { name, events: eventList } = props.pageContext
+
+  const events = eventList.filter(({ startDate }) => {
+    const date = new Date(startDate)
+    return isToday(date) || isAfter(date, today)
+  })
 
   const coordinates = events.reduce<Coordinates[]>((acc, { locationData }) => {
     return locationData.geometry
