@@ -23,7 +23,20 @@ export default function Duration({
           day: 'numeric'
         })}
       </span>
-      <span>☕ {timeToRead} мин. чтения</span>
+      <span>
+        {iconByTime(timeToRead)} {timeToRead} мин. чтения
+      </span>
     </div>
   )
+}
+
+function iconByTime(time: number) {
+  switch (true) {
+    case time > 5:
+      return '🥤'
+    case time > 10:
+      return '🍺'
+    default:
+      return '☕'
+  }
 }
