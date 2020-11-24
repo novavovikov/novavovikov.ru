@@ -1,7 +1,7 @@
 const hash = require('object-hash')
 const startOfToday = require('date-fns/startOfToday')
 const isAfter = require('date-fns/isAfter')
-const isToday = require('date-fns/isToday')
+const isWithinInterval = require('date-fns/isWithinInterval')
 const isEqual = require('date-fns/isEqual')
 const subDays = require('date-fns/subDays')
 
@@ -41,7 +41,7 @@ function formatEndDate(startDate, endDate) {
  * @property {Array<Object>} locationData
  * @returns {Event[]} events
  */
-exports.prepareEventData = function (category, events, locationData) {
+exports.prepareEventData = function(category, events, locationData) {
   return events.map((event) => {
     const startDate = new Date(event.startDate)
     const endDate = new Date(event.endDate)
@@ -63,7 +63,7 @@ exports.prepareEventData = function (category, events, locationData) {
  * @property {Object} [schema]
  * @returns {Event[]} events
  */
-exports.extractDataFromEvents = function (events, schema = {}) {
+exports.extractDataFromEvents = function(events, schema = {}) {
   const INITIAL_SCHEMA = ['url', 'location', 'title', 'startDate', 'endDate']
 
   return events.map((event) =>
@@ -83,14 +83,15 @@ exports.extractDataFromEvents = function (events, schema = {}) {
  * @property {Event[]} events
  * @returns {Event[]} events
  */
-exports.removePastEvents = function (events) {
+exports.removePastEvents = function(events) {
   const today = startOfToday()
 
   return events
-    .filter(({ startDate }) => {
-      const date = new Date(startDate)
+    .filter(({ startDate, endDate }) => {
+      const start = new Date(startDate)
+      const end = new Date(endDate || startDate)
 
-      return isToday(date) || isAfter(date, today)
+      return isWithinInterval(today, { start, end }) || isAfter(start, today)
     })
     .sort((a, b) => new Date(a.start) - new Date(b.start))
 }

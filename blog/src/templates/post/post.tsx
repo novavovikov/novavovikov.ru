@@ -34,7 +34,7 @@ export default function PostPage(props: PageProps<PostData, PostPageContext>) {
       }}>
       <Post
         postLink={props.location.href}
-        githubLink={`${LINKS.articles}${slug}`}
+        githubLink={`${LINKS.blog}${slug}`}
         article={markdownRemark}
       />
 

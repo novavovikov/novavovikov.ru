@@ -22,7 +22,7 @@ compose = (fn1, fn2) => (value) => fn2(fn1(value))
 add2AndSquare = (n) => square(add2(n))
 ```
 
-Мы можем использовать функцию высшего порядка (higher order function), чтобы упорядочить их.
+Мы можем использовать функцию высшего порядка (`higher order function`), чтобы упорядочить их.
 
 ```javascript
 add2AndSquare = compose(add2, square)

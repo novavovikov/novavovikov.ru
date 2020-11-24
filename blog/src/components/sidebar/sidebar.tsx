@@ -96,7 +96,7 @@ export default function Sidebar(props: Props) {
           className={s.SidebarAside__article}
           theme="gray"
           as={ExternalLink}
-          href={LINKS.articles}>
+          href={`${LINKS.blog}/articles`}>
           ✍️ Написать статью
         </Button>
 

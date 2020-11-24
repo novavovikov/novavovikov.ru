@@ -14,7 +14,7 @@ tags:
 ```
 docker container ls
 ```
-___
+
 
 ### Контейнера
 
@@ -58,7 +58,6 @@ docker exec -it <id_контейнера> sh
 ```
 docker logs <id_контейнера>
 ```
----
 
 ### Образы
 
@@ -76,7 +75,6 @@ docker image prune
 ```
 docker rmi -f $(docker images -q)
 ```
----
 
 ### Сеть и тома
 

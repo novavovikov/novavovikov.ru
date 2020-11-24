@@ -63,7 +63,7 @@ export default function Post(props: Props) {
       )}
 
       {html && (
-        <div
+        <article
           className={s.Post__content}
           dangerouslySetInnerHTML={{ __html: html }}
         />
