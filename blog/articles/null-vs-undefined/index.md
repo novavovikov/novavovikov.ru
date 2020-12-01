@@ -7,9 +7,7 @@ tags:
   - javascript
 ---
 
-# null vs undefined
-
-## Начнём с того что такое `null`.
+### Начнём с того что такое `null`
 
 - `null` - это пустое или несуществующее значение
 - `null` должен быть присвоен
@@ -21,7 +19,7 @@ console.log(foo); // null
 ```
 
 
-## Что такое `undefined`:
+### А теперь поговорим об `undefined`
 `undefined` чаще всего означает, что переменная была объявлена, но не определена.
 
 ```javascript
@@ -45,7 +43,7 @@ console.log(foo.bar); // undefined
 ![null_undefined](null-undefined.jpeg)
 
 
-## Чем похожи `null` и `undefined`?
+### Общее у `null` и `undefined`
 
 В JavaScript всего шесть ложных значений. `null` и `undefined` - относятся к ложным.
 Вот полный список:
@@ -58,6 +56,8 @@ console.log(foo.bar); // undefined
 - `NaN` (Not A Number)
 
 Любое другое значение в JavaScript считается истинным.
+
+___
 
 Также в JavaScript есть семь примитивных значений. `null` и `undefined` являются примитивными значениями.
 Вот полный список:
@@ -72,7 +72,7 @@ console.log(foo.bar); // undefined
 
 Все остальные значения в JavaScript являются объектами (объектами, функциями, массивами и т.д.).
 
-## Практические отличия `null` и `undefined`
+### Практические отличия `null` и `undefined`
 
 1. При использовании `typeof` для проверки `null` он возвращает объект, `undefined` же возвращает `undefined`:
 
@@ -126,7 +126,7 @@ JSON.parse(undefined) // Uncaught SyntaxError: Unexpected token u in JSON at pos
 ```
 
 
-## Подведём итоги:
+### Подведём итоги:
 - `null` - это присвоенное значение. Оно означает пустое значение.
 - `undefined` означает, что переменная была объявлена, но еще не определена.
 - `null` и `undefined` - ложные значения.

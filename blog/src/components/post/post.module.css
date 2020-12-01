@@ -80,6 +80,8 @@
 
   &__content {
     padding: 20px 60px 40px;
+    font-size: 15px;
+    line-height: 2;
 
     img {
       max-width: 100%;
