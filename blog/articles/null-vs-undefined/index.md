@@ -37,20 +37,14 @@ console.log(foo.bar); // undefined
 ```
 
 
-Если провести аналогию с туалетной бумагой, то `undefined` - это пустота,
-а `null` в свою очередь - катушка, на которую наматывается бумага (какие-либо значения):
-
-![null_undefined](null-undefined.jpeg)
-
-
 ### Общее у `null` и `undefined`
 
 В JavaScript всего шесть ложных значений. `null` и `undefined` - относятся к ложным.
 Вот полный список:
 
 - `false`
-- 0 (ноль)
-- “” (пустая строка)
+- `0` (ноль)
+- `“”` (пустая строка)
 - `null`
 - `undefined`
 - `NaN` (Not A Number)
@@ -62,13 +56,13 @@ ___
 Также в JavaScript есть семь примитивных значений. `null` и `undefined` являются примитивными значениями.
 Вот полный список:
 
-- Boolean
-- Null
-- Undefined
-- Number
-- String
-- Symbol
-- BigInt
+- `Boolean`
+- `Null`
+- `Undefined`
+- `Number`
+- `String`
+- `Symbol`
+- `BigInt`
 
 Все остальные значения в JavaScript являются объектами (объектами, функциями, массивами и т.д.).
 
@@ -131,6 +125,6 @@ JSON.parse(undefined) // Uncaught SyntaxError: Unexpected token u in JSON at pos
 - `undefined` означает, что переменная была объявлена, но еще не определена.
 - `null` и `undefined` - ложные значения.
 - `null` и `undefined` являются примитивами.
-- `typof null` является объектом и это ошибка в JavaScript
-- в функии и объекте значение по умолчанию с `undefined` будет использовать значение, а `null` - нет.
+- `typof null` является объектом и это ошибка JavaScript
+- в функции и объекте значение по умолчанию с `undefined` будет использовать значение, а `null` - нет.
 - `JSON` может обрабатывать только `null`, но не `undefined`

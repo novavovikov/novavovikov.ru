@@ -1,8 +1,8 @@
 ---
 cover: cover.png
 date: 2020-04-24
-title: Концепция цикла событий (event loop)
-description: Видео, на котором объяснется как работает event loop в javascript
+title: Что такое event loop?
+description: Видео, на котором рассказана концепция цикла событий в javascript
 tags:
   - javascript
 ---
