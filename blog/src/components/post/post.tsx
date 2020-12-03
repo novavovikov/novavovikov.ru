@@ -15,7 +15,7 @@ interface Props {
 }
 
 export default function Post(props: Props) {
-  const { html, timeToRead } = props.article
+  const { html, timeToRead, parent } = props.article
   const { title, description, date, cover, tags } = props.article.frontmatter
   const coverFluid = cover?.childImageSharp.fluid
 
@@ -39,6 +39,7 @@ export default function Post(props: Props) {
         <Duration
           className={s.Post__date}
           date={date}
+          modifiedDate={parent.modifiedTime}
           timeToRead={timeToRead}
         />
 

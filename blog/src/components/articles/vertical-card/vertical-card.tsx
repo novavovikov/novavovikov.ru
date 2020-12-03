@@ -7,7 +7,7 @@ import { ArticleProps } from '../articles'
 import s from './vertical-card.module.css'
 
 export default function VerticalCard(props: ArticleProps) {
-  const { fields, frontmatter, timeToRead } = props.data
+  const { fields, frontmatter, timeToRead, parent } = props.data
   const { title, description, tags, date, cover } = frontmatter
 
   return (
@@ -30,6 +30,7 @@ export default function VerticalCard(props: ArticleProps) {
           <Duration
             className={s.VCard__duration}
             date={date}
+            modifiedDate={parent.modifiedTime}
             timeToRead={timeToRead}
           />
 

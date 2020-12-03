@@ -1,6 +1,7 @@
 import React from 'react'
 import { Disqus } from 'gatsby-plugin-disqus'
 import { graphql, PageProps } from 'gatsby'
+import formatISO from 'date-fns/formatISO'
 import { PostData, PostPageContext } from '../../typings/post'
 import Page from '../../ui/page'
 import Post from '../../components/post'
@@ -30,7 +31,33 @@ export default function PostPage(props: PageProps<PostData, PostPageContext>) {
       seoProps={{
         title,
         description,
-        image: cover?.childImageSharp.fluid.src
+        image: cover?.childImageSharp.fluid.src,
+        meta: [
+          {
+            property: 'article:published_time',
+            content: formatISO(new Date(markdownRemark.frontmatter.date), {
+              representation: 'date'
+            })
+          },
+          {
+            property: 'article:modified_time',
+            content: formatISO(new Date(markdownRemark.parent.modifiedTime), {
+              representation: 'date'
+            })
+          },
+          {
+            property: 'article:author',
+            content: site.siteMetadata.social.twitter
+          },
+          {
+            property: 'article:section',
+            content: 'Technology'
+          },
+          {
+            property: 'article:tag',
+            content: markdownRemark.frontmatter.tags?.join(',') || ''
+          }
+        ]
       }}>
       <Post
         postLink={props.location.href}
@@ -67,6 +94,9 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         siteUrl
+        social {
+          twitter
+        }
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
@@ -85,6 +115,11 @@ export const pageQuery = graphql`
               ...GatsbyImageSharpFluid
             }
           }
+        }
+      }
+      parent {
+        ... on File {
+          modifiedTime
         }
       }
     }

@@ -8,16 +8,21 @@ export interface ArticleMeta {
   cover?: {
     childImageSharp: ChildImageSharp
   }
-  title: string
   date: string
+  title: string
   description: string
   tags?: string[]
+}
+
+export interface FileData {
+  modifiedTime: string
 }
 
 export interface ArticleInfo {
   id: string
   timeToRead: number
   frontmatter: ArticleMeta
+  parent: FileData
   html?: string
   fields: {
     slug: string
@@ -31,6 +36,7 @@ export interface ArticleType {
   }
   timeToRead: number
   frontmatter: ArticleMeta
+  parent: FileData
 }
 
 export interface MarkdownEdge {

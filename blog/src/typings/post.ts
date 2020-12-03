@@ -13,7 +13,10 @@ export interface PostImageFile {
 export interface PostData {
   site: {
     siteMetadata: {
-      siteUrl
+      siteUrl: string
+      social: {
+        twitter: string
+      }
     }
   }
   markdownRemark: ArticleInfo

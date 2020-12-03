@@ -7,7 +7,7 @@ import Duration from '../../duration'
 import s from './simple-card.module.css'
 
 export default function SimpleCard(props: ArticleProps) {
-  const { fields, frontmatter, timeToRead } = props.data
+  const { fields, frontmatter, timeToRead, parent } = props.data
   const { title, description, tags, date, cover } = frontmatter
 
   return (
@@ -42,6 +42,7 @@ export default function SimpleCard(props: ArticleProps) {
           <Duration
             className={s.SCard__duration}
             date={date}
+            modifiedDate={parent.modifiedTime}
             timeToRead={timeToRead}
           />
         </div>

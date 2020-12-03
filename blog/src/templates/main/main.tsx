@@ -9,8 +9,8 @@ import { filterArticles } from '../../utils/articles'
 import { pluralizeText } from '../../utils/pluralizeText'
 import Banner from '../../components/banner'
 import { EventType } from '../../typings/event'
-import s from './main.module.css'
 import Sidebar from '../../components/sidebar'
+import s from './main.module.css'
 
 interface Data {
   site: Site
@@ -105,10 +105,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allMarkdownRemark(
-      filter: { frontmatter: { type: { ne: "DRAFT" } } }
-      sort: { fields: [frontmatter___date], order: DESC }
-    ) {
+    allMarkdownRemark(filter: { frontmatter: { type: { ne: "DRAFT" } } }) {
       edges {
         node {
           id
@@ -128,6 +125,11 @@ export const pageQuery = graphql`
           }
           fields {
             slug
+          }
+          parent {
+            ... on File {
+              modifiedTime
+            }
           }
         }
       }

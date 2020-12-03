@@ -4,25 +4,37 @@ import s from './duration.module.css'
 
 interface Props extends React.HTMLAttributes<HTMLDivElement> {
   date: string
+  modifiedDate: string
   timeToRead: number
 }
+
+const DATE_PARAMS: [string, Intl.DateTimeFormatOptions] = [
+  'ru-RU',
+  {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  }
+]
 
 export default function Duration({
   className,
   date,
+  modifiedDate,
   timeToRead,
   ...restProps
 }: Props) {
+  const modified =
+    modifiedDate && new Date(modifiedDate).toLocaleDateString(...DATE_PARAMS)
+
+  const created = date
+    ? new Date(date).toLocaleDateString(...DATE_PARAMS)
+    : modified
+
   return (
     <div className={cn(s.Duration, className)} {...restProps}>
-      <span>
-        🗓️{' '}
-        {new Date(date).toLocaleDateString('ru-RU', {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric'
-        })}
-      </span>
+      <span title={`Последнее обновление ${modified}`}>🗓️ {created}</span>
+
       <span>
         {iconByTime(timeToRead)} {timeToRead} мин. чтения
       </span>
