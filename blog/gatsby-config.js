@@ -114,12 +114,6 @@ module.exports = {
       }
     },
     {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: `UA-164641660-1`
-      }
-    },
-    {
       resolve: `gatsby-plugin-yandex-metrika`,
       options: {
         trackingId: '41516474',
