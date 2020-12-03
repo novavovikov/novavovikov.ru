@@ -123,6 +123,7 @@ module.exports = {
       resolve: `gatsby-plugin-yandex-metrika`,
       options: {
         trackingId: '41516474',
+        clickmap: true,
         webvisor: true,
         trackHash: true,
         afterBody: true,
@@ -231,8 +232,8 @@ module.exports = {
       }
     },
     `gatsby-plugin-css-modules-typings`,
-    'gatsby-plugin-sharp',
     `gatsby-transformer-sharp`,
+    'gatsby-plugin-sharp',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-catch-links',
     'gatsby-plugin-use-query-params',

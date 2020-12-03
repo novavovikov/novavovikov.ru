@@ -3,9 +3,18 @@ export interface LocationGeometry {
   lng: number
 }
 
+export interface LocationTimezone {
+  name: string
+  now_in_dst: number
+  offset_sec: number
+  offset_string: string
+  short_name: string
+}
+
 export interface LocationData {
   flag: Nulled<string>
   geometry: Nulled<LocationGeometry>
+  timezone: Nulled<LocationTimezone>
 }
 
 export interface FrontendEvent {

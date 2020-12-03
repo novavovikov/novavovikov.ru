@@ -1,4 +1,10 @@
-export function getDateObject(date: string | null) {
+import { LocationTimezone } from '../typings/event'
+
+export function getDateObject(
+  date: Nulled<string>,
+  // FIXME use timezone
+  timezone: Nulled<LocationTimezone>
+) {
   if (!date) {
     return null
   }

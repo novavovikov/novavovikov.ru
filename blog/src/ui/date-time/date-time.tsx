@@ -39,7 +39,7 @@ const timeParams: [string, Intl.DateTimeFormatOptions] = [
   }
 ]
 
-function getDateAndTime(d: Date | null) {
+function getDateAndTime(d: Nulled<Date>) {
   if (!d) {
     return {
       date: null,

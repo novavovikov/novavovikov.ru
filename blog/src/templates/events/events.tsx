@@ -69,8 +69,13 @@ export default function Events(props: PageProps<{}, PageContext>) {
               key={ndx}
               {...event}
               flag={event.locationData.flag}
-              startDate={getDateObject(event.startDate)!}
-              endDate={getDateObject(event.endDate)}
+              startDate={
+                getDateObject(event.startDate, event.locationData.timezone)!
+              }
+              endDate={getDateObject(
+                event.endDate,
+                event.locationData.timezone
+              )}
             />
           ))}
         </div>

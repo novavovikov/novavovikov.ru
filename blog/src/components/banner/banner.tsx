@@ -44,12 +44,14 @@ export default function Banner({ event }: Props) {
         <div className={s.Banner__interval}>
           <Interval
             prepend="📅 "
-            startDate={getDateObject(event.startDate)!}
-            endDate={getDateObject(event.endDate)}
+            startDate={
+              getDateObject(event.startDate, event.locationData.timezone)!
+            }
+            endDate={getDateObject(event.endDate, event.locationData.timezone)}
           />
         </div>
         <Button as={Link} to={`/events/${event.category}`}>
-          Спиок {event.category} событий
+          Список {event.category} событий
         </Button>
       </div>
     </div>

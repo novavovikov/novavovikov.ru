@@ -10,7 +10,7 @@ interface Props {
   flag: Nulled<string>
   location: string
   startDate: Date
-  endDate: Date | null
+  endDate: Nulled<Date>
 }
 
 export default function Event(props: Props) {

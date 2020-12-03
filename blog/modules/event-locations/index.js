@@ -7,7 +7,7 @@ const {
 } = require('./events')
 
 const FILE_PATH = path.resolve(__dirname, '../../static', 'location-info.json')
-const FIELDS = ['annotations.flag', 'geometry']
+const FIELDS = ['annotations.flag', 'annotations.timezone', 'geometry']
 
 /**
  * @typedef {Object} Geometry
