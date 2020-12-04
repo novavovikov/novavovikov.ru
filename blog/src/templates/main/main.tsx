@@ -105,7 +105,10 @@ export const pageQuery = graphql`
         }
       }
     }
-    allMarkdownRemark(filter: { frontmatter: { type: { ne: "DRAFT" } } }) {
+    allMarkdownRemark(
+      filter: { frontmatter: { type: { ne: "DRAFT" } } }
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
       edges {
         node {
           id
