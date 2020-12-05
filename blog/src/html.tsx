@@ -32,10 +32,6 @@ export default function HTML({
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
         <title>A blog by Vladimir Novikov 🌈</title>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap"
-          rel="stylesheet"
-        />
         {headComponents}
       </head>
       <body {...bodyAttributes}>

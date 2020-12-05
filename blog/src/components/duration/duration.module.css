@@ -3,5 +3,6 @@
   align-items: center;
   grid-template-columns: auto auto;
   grid-gap: 14px;
+  white-space: nowrap;
   line-height: 1;
 }
