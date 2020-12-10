@@ -117,7 +117,6 @@ module.exports = {
       resolve: `gatsby-plugin-yandex-metrika`,
       options: {
         trackingId: '41516474',
-        clickmap: true,
         webvisor: true,
         trackHash: true,
         afterBody: true,

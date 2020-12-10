@@ -124,7 +124,7 @@ export default function Sidebar(props: Props) {
             />
           </div>
         </SidebarBlock>
-        {tags.length > 0 && (
+        {false && tags.length > 0 && (
           <SidebarBlock className={s.SidebarAside__tags} title="Теги" icon="#️⃣">
             <Tags tags={tags} />
           </SidebarBlock>
