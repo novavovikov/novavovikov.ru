@@ -16,10 +16,10 @@ module.exports = {
     )
   },
   siteMetadata: {
-    title: 'NovaVovikov.ru',
+    title: 'devarticles.space',
     author: 'novavovikov',
-    description: 'My personal blog',
-    siteUrl: 'https://novavovikov.ru',
+    description: 'Articles for developers',
+    siteUrl: 'https://devarticles.space',
     social: {
       twitter: 'https://twitter.com/novavovikov',
       github: 'https://github.com/novavovikov',
@@ -150,7 +150,7 @@ module.exports = {
               return allMarkdownRemark.edges.map((edge) => {
                 const siteUrl = site.siteMetadata.siteUrl
                 const postText = `
-                <div style="margin-top=55px; font-style: italic;">(Я статья опубликоана на моём сайте novavovikov.ru. <a href="${siteUrl +
+                <div style="margin-top=55px; font-style: italic;">(Я статья опубликоана на моём сайте devarticles.space. <a href="${siteUrl +
                   edge.node.fields.slug}">Перейти</a>.)</div>
               `
 

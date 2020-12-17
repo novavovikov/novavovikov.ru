@@ -1,7 +1,7 @@
 {
-  "name": "novavovikov.ru",
+  "name": "devarticles.space",
   "version": "1.0.0",
-  "description": "My personal blog",
+  "description": "Articles for developers",
   "repository": {
     "directory": "blog",
     "url": "https://github.com/novavovikov/novavovikov.ru"
