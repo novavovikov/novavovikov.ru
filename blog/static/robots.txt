@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://novavovikov.ru/sitemap.xml
+Host: https://devarticles.space/
+Sitemap: https://devarticles.space/sitemap.xml
 
