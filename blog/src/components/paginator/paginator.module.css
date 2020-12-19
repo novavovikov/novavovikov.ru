@@ -1,0 +1,35 @@
+.Paginator {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 3em -10px 0;
+
+  &__control {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    color: inherit;
+    width: 40px;
+    height: 40px;
+    text-decoration: none;
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius);
+    margin: 0 10px 10px;
+    transition: var(--transition-f);
+
+    &:hover {
+      border-color: var(--c-accent);
+    }
+
+    &_active {
+      color: var(--c-accent-secondary);
+      border-color: var(--c-accent-secondary);
+      pointer-events: none;
+      filter: brightness(80%);
+    }
+
+    &_nextPage {
+      margin: 0 0 0 auto;
+    }
+  }
+}

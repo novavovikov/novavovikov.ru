@@ -16,11 +16,7 @@ interface Props {
 }
 
 function renderCard(hasSearchMode: boolean, ndx: number) {
-  if (hasSearchMode) {
-    return SimpleCard
-  }
-
-  if (ndx !== 0 && ndx % 3 === 0) {
+  if (hasSearchMode || (ndx !== 0 && ndx % 3 === 0)) {
     return SimpleCard
   }
 

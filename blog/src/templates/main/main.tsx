@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql, PageProps } from 'gatsby'
+import { graphql, Link, PageProps } from 'gatsby'
 import { AllMarkdownRemark, Site } from '../../typings/markdown'
 import Page from '../../ui/page'
 import Articles from '../../components/articles'
@@ -11,6 +11,7 @@ import Banner from '../../components/banner'
 import { EventType } from '../../typings/event'
 import Sidebar from '../../components/sidebar'
 import s from './main.module.css'
+import Paginator from '../../components/paginator'
 
 interface Data {
   site: Site
@@ -22,14 +23,19 @@ interface PageContext {
   lastEvent: EventType | null
   frontendEventsCount: number
   kotlinEventsCount: number
+  pagination: {
+    currentPage: number
+    totalPages
+  }
 }
 
 export default function MainPage(props: PageProps<Data, PageContext>) {
   const {
     tags,
+    lastEvent,
     frontendEventsCount,
     kotlinEventsCount,
-    lastEvent
+    pagination
   } = props.pageContext
   const { allMarkdownRemark, site } = props.data
 
@@ -75,6 +81,11 @@ export default function MainPage(props: PageProps<Data, PageContext>) {
             hasSearchMode={Boolean(tag) || Boolean(query)}
             articles={articles}
           />
+
+          <Paginator
+            currentPage={pagination.currentPage}
+            totalPages={pagination.totalPages}
+          />
         </div>
 
         <Sidebar
@@ -91,7 +102,7 @@ export default function MainPage(props: PageProps<Data, PageContext>) {
 }
 
 export const pageQuery = graphql`
-  query {
+  query blogListQuery($limit: Int!, $skip: Int!) {
     site {
       siteMetadata {
         title
@@ -108,6 +119,8 @@ export const pageQuery = graphql`
     allMarkdownRemark(
       filter: { frontmatter: { type: { ne: "DRAFT" } } }
       sort: { fields: [frontmatter___date], order: DESC }
+      limit: $limit
+      skip: $skip
     ) {
       edges {
         node {

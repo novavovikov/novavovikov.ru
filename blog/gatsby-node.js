@@ -63,6 +63,9 @@ exports.createPages = async ({ actions, graphql }) => {
   })
 
   // Main page
+  const postsPerPage = 6
+  const totalPages = Math.ceil(posts.length / postsPerPage)
+
   const allTags = posts.reduce((res, { node }) => {
     if (node.frontmatter.tags) {
       for (const tag of node.frontmatter.tags) {
@@ -73,16 +76,28 @@ exports.createPages = async ({ actions, graphql }) => {
     return res
   }, new Set())
 
-  createPage({
-    path: '/',
-    component: path.resolve('./src/templates/main/main.tsx'),
-    context: {
-      tags: Array.from(allTags),
+  Array.from({ length: totalPages }).forEach((_, i) => {
+    const offset = i * postsPerPage
 
-      lastEvent: frontendEvents[0] ?? kotlinEvents[0] ?? null,
-      frontendEventsCount: frontendEvents.length,
-      kotlinEventsCount: kotlinEvents.length
-    }
+    createPage({
+      path: i === 0 ? `/` : `/${i + 1}`,
+      component: path.resolve('./src/templates/main/main.tsx'),
+      context: {
+        skip: offset,
+        limit: postsPerPage,
+
+        pagination: {
+          currentPage: i + 1,
+          totalPages
+        },
+
+        tags: Array.from(allTags),
+
+        lastEvent: frontendEvents[0] ?? kotlinEvents[0] ?? null,
+        frontendEventsCount: frontendEvents.length,
+        kotlinEventsCount: kotlinEvents.length
+      }
+    })
   })
 
   // Post page

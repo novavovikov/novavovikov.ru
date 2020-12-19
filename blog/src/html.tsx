@@ -31,7 +31,7 @@ export default function HTML({
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
-        <title>A blog by Vladimir Novikov 🌈</title>
+        <title>🧑‍💻 Developer articles</title>
         {headComponents}
       </head>
       <body {...bodyAttributes}>
