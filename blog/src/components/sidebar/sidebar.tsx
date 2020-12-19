@@ -32,14 +32,7 @@ interface Props {
 }
 
 export default function Sidebar(props: Props) {
-  const { search, pathname } = props.location
-  const {
-    tags,
-    socialData,
-    frontendEventsCount,
-    kotlinEventsCount,
-    navigate
-  } = props
+  const { tags, socialData, frontendEventsCount, kotlinEventsCount } = props
 
   const {
     sidebarRef,
@@ -110,14 +103,14 @@ export default function Sidebar(props: Props) {
             )}
 
             <EventsBlock
-              to="events/frontend"
+              to="/events/frontend"
               count={frontendEventsCount}
               title="Frontend"
               img="/frontend-events.jpeg"
             />
 
             <EventsBlock
-              to="events/kotlin"
+              to="/events/kotlin"
               count={kotlinEventsCount}
               title="Kotlin"
               img="/kotlin-events.png"
