@@ -1,5 +1,4 @@
 ---
-type: DRAFT
 title: Введение в математику - Числа
 description: Нужно почитать
 tags:

@@ -1,5 +1,4 @@
 ---
-type: DRAFT
 cover: cover.webp
 date: 2020-12-20
 title: Стандарт ES2021

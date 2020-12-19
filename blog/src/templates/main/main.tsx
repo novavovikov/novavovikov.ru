@@ -117,7 +117,7 @@ export const pageQuery = graphql`
       }
     }
     allMarkdownRemark(
-      filter: { frontmatter: { type: { ne: "DRAFT" } } }
+      filter: { fileAbsolutePath: { regex: "/^((?!DRAFT).)*$/" } }
       sort: { fields: [frontmatter___date], order: DESC }
       limit: $limit
       skip: $skip

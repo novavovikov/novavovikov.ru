@@ -1,5 +1,4 @@
 ---
-type: DRAFT
 title: Список для изучения
 description: Нужно почитать
 tags:

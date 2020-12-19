@@ -4,15 +4,8 @@ import SidebarIcon from './icons/sidebar.svg?inline'
 import SidebarBlock from '../sidebar-block'
 import EventsBlock from '../events-block'
 import Tags from '../tags'
-import { Link } from 'gatsby'
 import { NavigateFn, WindowLocation } from '@reach/router'
 import Contacts from '../contacts/contacts'
-import {
-  addToUrlParams,
-  deleteFromUrlParams,
-  hasToUrlParams
-} from '../../utils/urlParams'
-import { QUERY_PARAM } from '../../constants/queryParams'
 import { SocialData } from '../../typings/markdown'
 import ExternalLink from '../../ui/external-link'
 import { LINKS } from '../../constants/links'
