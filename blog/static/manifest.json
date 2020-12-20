@@ -1,12 +1,21 @@
 {
-  "short_name": "NovaVovikov",
-  "name": "NovaVovikov",
-  "description": "NovaVovikov Blog",
-  "display": "standalone",
-  "theme_color": "#0366d6",
-  "background_color": "#fff",
-  "scope": "/",
-  "start_url": "./?utm_source=web_app_manifest",
-  "orientation": "portrait-primary",
-  "icons": []
+  "name": "DevArticles",
+  "short_name": "DevArticles",
+  "description": "Articles for developers",
+  "icons": [
+    {
+      "src": "/icons/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#e6e6e6",
+  "background_color": "#e6e6e6",
+  "start_url": "/",
+  "display": "standalone"
 }

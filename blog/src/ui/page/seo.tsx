@@ -87,6 +87,7 @@ export default function SEO({
     { property: 'og:description', content: metaDescription },
 
     // Application params
+    { name: 'msapplication-config', content: '/browserconfig.xml' },
     { name: 'msapplication-tooltip', content: metaTitle },
     { name: 'msapplication-starturl', content: `${metaUrl}?pinned=true` },
     { name: 'msapplication-tap-highlight', content: 'no' },
@@ -98,8 +99,8 @@ export default function SEO({
       content: 'black-translucent'
     },
     { name: 'apple-mobile-web-app-title', content: metaTitle },
-    { name: 'msapplication-TileColor', content: '#0366d6' },
-    { name: 'theme-color', content: '#0366d6' }
+    { name: 'msapplication-TileColor', content: '#da532c' },
+    { name: 'theme-color', content: '#e6e6e6' }
   ]
 
   return (

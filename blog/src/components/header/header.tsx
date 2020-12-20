@@ -5,6 +5,7 @@ import LogoIcon from './icons/logo.svg?inline'
 import Search from '../search'
 import ThemeControl from '../theme-control'
 import s from './header.module.css'
+import { ROUTES } from '../../constants/routes'
 
 export default function Header() {
   return (
@@ -12,7 +13,7 @@ export default function Header() {
       <Container>
         <div className={s.HeaderContent}>
           <div className={s.HeaderSection}>
-            <Link to="/" className={s.Header__logo}>
+            <Link to={ROUTES.MAIN} className={s.Header__logo}>
               <LogoIcon />
             </Link>
 

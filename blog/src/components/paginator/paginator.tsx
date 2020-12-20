@@ -3,6 +3,7 @@ import cn from 'classnames'
 import { Link } from 'gatsby'
 
 import s from './paginator.module.css'
+import { ROUTES } from '../../constants/routes'
 
 interface Props extends React.HTMLAttributes<HTMLDivElement> {
   rootPath?: string
@@ -12,7 +13,7 @@ interface Props extends React.HTMLAttributes<HTMLDivElement> {
 
 export default function Paginator({
   className,
-  rootPath = '/',
+  rootPath = ROUTES.MAIN,
   currentPage,
   totalPages,
   ...restProps
@@ -45,7 +46,7 @@ export default function Paginator({
           </Link>
 
           <Link
-            to={`/${currentPage + 1}`}
+            to={`${rootPath}${currentPage + 1}`}
             className={cn(s.Paginator__control, s.Paginator__control_nextPage)}>
             ▶️
           </Link>

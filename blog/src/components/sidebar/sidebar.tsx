@@ -14,6 +14,7 @@ import { useSidebarSwipes } from './use-sidebar-swipes'
 import s from './sidebar.module.css'
 import FormPopup from '../form-popup'
 import FeedbackForm from '../feedback-form'
+import { ROUTES } from '../../constants/routes'
 
 interface Props {
   location: WindowLocation
@@ -89,27 +90,28 @@ export default function Sidebar(props: Props) {
         <SidebarBlock
           className={s.SidebarAside__events}
           title="События"
-          icon="📅">
+          icon="🎉">
           <div className={s.SidebarAside}>
             {frontendEventsCount === 0 && kotlinEventsCount === 0 && (
               <>Мы не нашли {'\n'}предстоящих событий 😔</>
             )}
 
             <EventsBlock
-              to="/events/frontend"
+              to={ROUTES.FRONTEND_EVENTS}
               count={frontendEventsCount}
               title="Frontend"
-              img="/frontend-events.jpeg"
+              img="/images/frontend-events.jpeg"
             />
 
             <EventsBlock
-              to="/events/kotlin"
+              to={ROUTES.KOTLIN_EVENTS}
               count={kotlinEventsCount}
               title="Kotlin"
-              img="/kotlin-events.png"
+              img="/images/kotlin-events.png"
             />
           </div>
         </SidebarBlock>
+
         {false && tags.length > 0 && (
           <SidebarBlock className={s.SidebarAside__tags} title="Теги" icon="#️⃣">
             <Tags tags={tags} />

@@ -150,18 +150,22 @@ module.exports = {
               return allMarkdownRemark.edges.map((edge) => {
                 const siteUrl = site.siteMetadata.siteUrl
                 const postText = `
-                <div style="margin-top=55px; font-style: italic;">(Я статья опубликоана на моём сайте devarticles.space. <a href="${siteUrl +
+                <div style="margin-top=55px; font-style: italic;">(Я статья опубликована на моём сайте devarticles.space. <a href="${siteUrl +
                   edge.node.fields.slug}">Перейти</a>.)</div>
               `
 
                 let html = edge.node.html
                 html = html
                   .replace(/href="\//g, `href="${siteUrl}/`)
+                  .replace(/href=&quot;\//g, `href=&quot;${siteUrl}/`)
                   .replace(/src="\//g, `src="${siteUrl}/`)
+                  .replace(/src=&quot;\//g, `src=&quot;${siteUrl}/`)
                   .replace(/"\/static\//g, `"${siteUrl}/static/`)
+                  .replace(/&quot;\/static\//g, `&quot;${siteUrl}/static/`)
                   .replace(/,\s*\/static\//g, `,${siteUrl}/static/`)
 
                 return Object.assign({}, edge.node.frontmatter, {
+                  title: site.siteMetadata.title,
                   description: edge.node.frontmatter.description,
                   date: edge.node.frontmatter.date,
                   url: site.siteMetadata.siteUrl + edge.node.fields.slug,
@@ -173,8 +177,9 @@ module.exports = {
             query: `
               {
                 allMarkdownRemark(
-                  limit: 1000,
-                  sort: { order: DESC, fields: [frontmatter___date] }
+                  filter: { fileAbsolutePath: { regex: "/^((?!DRAFT).)*$/" } }
+                  sort: { fields: [frontmatter___date], order: DESC }
+                  limit: 1000
                 ) {
                   edges {
                     node {
@@ -194,7 +199,7 @@ module.exports = {
               }
             `,
             output: '/rss.xml',
-            title: "NovaVovikov's Blog RSS Feed"
+            title: 'DevArticles RSS Feed'
           }
         ]
       }
@@ -203,14 +208,25 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `NovaVovikov Blog`,
-        short_name: `NovaVovikov`,
+        name: `DevArticles`,
+        short_name: `DevArticles`,
+        description: 'Articles for developers',
+        icons: [
+          {
+            src: '/icons/android-chrome-192x192.png',
+            sizes: '192x192',
+            type: 'image/png'
+          },
+          {
+            src: '/icons/android-chrome-512x512.png',
+            sizes: '512x512',
+            type: 'image/png'
+          }
+        ],
+        theme_color: `#e6e6e6`,
+        background_color: `#e6e6e6`,
         start_url: `/`,
-        background_color: `#ffffff`,
-        theme_color: `#0366d6`,
-        display: `standalone`,
-        icon: `static/logo.png`,
-        theme_color_in_head: false
+        display: `standalone`
       }
     },
     {

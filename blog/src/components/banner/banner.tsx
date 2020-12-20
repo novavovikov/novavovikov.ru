@@ -7,6 +7,7 @@ import { ls } from '../../utils/storage'
 import { Interval } from '../../ui/date-time'
 import { getDateObject } from '../../utils/date'
 import s from './banner.module.css'
+import { ROUTES } from '../../constants/routes'
 
 interface Props {
   event: EventType
@@ -50,7 +51,7 @@ export default function Banner({ event }: Props) {
             endDate={getDateObject(event.endDate, event.locationData.timezone)}
           />
         </div>
-        <Button as={Link} to={`/events/${event.category}`}>
+        <Button as={Link} to={`${ROUTES.EVENTS}/${event.category}`}>
           Список {event.category} событий
         </Button>
       </div>

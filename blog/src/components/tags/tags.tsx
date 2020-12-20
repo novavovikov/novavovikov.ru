@@ -4,6 +4,7 @@ import { Link } from 'gatsby'
 import { useQueryParam } from 'use-query-params'
 import { QUERY_PARAM } from '../../constants/queryParams'
 import s from './tags.module.css'
+import { ROUTES } from '../../constants/routes'
 
 interface Props {
   limit?: number
@@ -27,7 +28,7 @@ export default function Tags({ limit = 6, tags }: Props) {
           className={cn(s.Tags__item, {
             [s.Tags__item_active]: selectedTag === tag
           })}
-          to={`/?t=${tag}`}>
+          to={`${ROUTES.MAIN}?t=${tag}`}>
           #{tag}
         </Link>
       ))}

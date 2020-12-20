@@ -1,7 +1,7 @@
 .Banner {
   position: relative;
   overflow: hidden;
-  background: var(--c-bg-secondary) url('/tech-event.jpg') no-repeat center/cover;
+  background: var(--c-bg-secondary) url('/images/tech-event.jpg') no-repeat center/cover;
   background-attachment: fixed;
 
   &:before {
