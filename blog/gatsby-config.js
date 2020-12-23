@@ -157,11 +157,8 @@ module.exports = {
                 let html = edge.node.html
                 html = html
                   .replace(/href="\//g, `href="${siteUrl}/`)
-                  .replace(/href=&quot;\//g, `href=&quot;${siteUrl}/`)
                   .replace(/src="\//g, `src="${siteUrl}/`)
-                  .replace(/src=&quot;\//g, `src=&quot;${siteUrl}/`)
                   .replace(/"\/static\//g, `"${siteUrl}/static/`)
-                  .replace(/&quot;\/static\//g, `&quot;${siteUrl}/static/`)
                   .replace(/,\s*\/static\//g, `,${siteUrl}/static/`)
 
                 return Object.assign({}, edge.node.frontmatter, {
@@ -246,7 +243,6 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-catch-links',
     'gatsby-plugin-use-query-params',
-    `gatsby-plugin-sitemap`,
-    `gatsby-plugin-feed`
+    `gatsby-plugin-sitemap`
   ]
 }
