@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql, Link, PageProps } from 'gatsby'
+import { graphql, PageProps } from 'gatsby'
 import { AllMarkdownRemark, Site } from '../../typings/markdown'
 import Page from '../../ui/page'
 import Articles from '../../components/articles'
@@ -12,6 +12,7 @@ import { EventType } from '../../typings/event'
 import Sidebar from '../../components/sidebar'
 import s from './main.module.css'
 import Paginator from '../../components/paginator'
+import { filterByDates } from '../../utils/filter'
 
 interface Data {
   site: Site
@@ -20,9 +21,8 @@ interface Data {
 
 interface PageContext {
   tags: string[]
-  lastEvent: EventType | null
-  frontendEventsCount: number
-  kotlinEventsCount: number
+  frontendEvents: EventType[]
+  kotlinEvents: EventType[]
   pagination: {
     currentPage: number
     totalPages
@@ -30,19 +30,16 @@ interface PageContext {
 }
 
 export default function MainPage(props: PageProps<Data, PageContext>) {
-  const {
-    tags,
-    lastEvent,
-    frontendEventsCount,
-    kotlinEventsCount,
-    pagination
-  } = props.pageContext
   const { allMarkdownRemark, site } = props.data
+  const { tags, frontendEvents, kotlinEvents, pagination } = props.pageContext
 
   const [tag] = useQueryParam<string>(QUERY_PARAM.tag)
   const [query] = useQueryParam<string>(QUERY_PARAM.query)
 
   const isMainPage = !tag && !query
+  const lastEvent = frontendEvents[0] ?? kotlinEvents[0] ?? null
+  const frontendFutureEvents = filterByDates(frontendEvents)
+  const kotlinFutureEvents = filterByDates(kotlinEvents)
 
   const articles = filterArticles(allMarkdownRemark.edges, {
     tag,
@@ -92,8 +89,8 @@ export default function MainPage(props: PageProps<Data, PageContext>) {
           location={props.location}
           socialData={site.siteMetadata.social}
           tags={tags}
-          frontendEventsCount={frontendEventsCount}
-          kotlinEventsCount={kotlinEventsCount}
+          frontendEventsCount={frontendFutureEvents.length}
+          kotlinEventsCount={kotlinFutureEvents.length}
           navigate={props.navigate}
         />
       </div>

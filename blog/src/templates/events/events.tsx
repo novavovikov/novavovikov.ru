@@ -1,8 +1,5 @@
 import { PageProps } from 'gatsby'
 import React from 'react'
-import startOfToday from 'date-fns/startOfToday'
-import isAfter from 'date-fns/isAfter'
-import isWithinInterval from 'date-fns/isWithinInterval'
 import Page from '../../ui/page'
 import { EventType } from '../../typings/event'
 import Event from '../../components/event/event'
@@ -12,8 +9,7 @@ import { getDateObject } from '../../utils/date'
 import SubscribeForm from '../../components/subscribe-form'
 import FormPopup from '../../components/form-popup/form-popup'
 import s from './events.module.css'
-
-const today = startOfToday()
+import { filterByDates } from '../../utils/filter'
 
 interface PageContext {
   name: String
@@ -24,12 +20,7 @@ export default function Events(props: PageProps<{}, PageContext>) {
   const [isOpen, setOpenStatus] = React.useState<boolean>(false)
   const { name, events: eventList } = props.pageContext
 
-  const events = eventList.filter(({ startDate, endDate }) => {
-    const start = new Date(startDate)
-    const end = new Date(endDate || startDate)
-
-    return isWithinInterval(today, { start, end }) || isAfter(start, today)
-  })
+  const events = filterByDates(eventList)
 
   const coordinates = events.reduce<Coordinates[]>((acc, { locationData }) => {
     return locationData.geometry

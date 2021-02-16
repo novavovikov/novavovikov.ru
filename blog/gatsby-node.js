@@ -93,9 +93,8 @@ exports.createPages = async ({ actions, graphql }) => {
 
         tags: Array.from(allTags),
 
-        lastEvent: frontendEvents[0] ?? kotlinEvents[0] ?? null,
-        frontendEventsCount: frontendEvents.length,
-        kotlinEventsCount: kotlinEvents.length
+        frontendEvents,
+        kotlinEvents
       }
     })
   })
