@@ -4,13 +4,10 @@ on:
   push:
     branches:
       - master
-  schedule:
-    # used for events
-    - cron: '0 0 * * *'
 
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-16.04
 
     steps:
       - uses: actions/checkout@v2
@@ -31,12 +28,10 @@ jobs:
           cd blog
           npm i
           npm run build
-
       - name: Build images
         run: |
           docker-compose build
           docker-compose push
-
       - name: Deploy
         env:
           GATSBY_GITHUB_SERVER_URL: $GITHUB_SERVER_URL
@@ -47,8 +42,6 @@ jobs:
           MAIL_RECIPIENT: ${{ secrets.MAIL_RECIPIENT }}
         run: |
           export DOCKER_HOST=ssh://${{ secrets.PROD_USER }}@${{ secrets.PROD_HOST }}:${{ secrets.PROD_PORT }}
-
           docker-compose pull
           docker-compose up --build --force-recreate -d
-
           unset DOCKER_HOST
