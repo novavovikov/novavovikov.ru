@@ -124,12 +124,6 @@ module.exports = {
       }
     },
     {
-      resolve: `gatsby-plugin-disqus`,
-      options: {
-        shortname: `novavovikov`
-      }
-    },
-    {
       resolve: `gatsby-plugin-feed`,
       options: {
         query: `
@@ -202,7 +196,6 @@ module.exports = {
         ]
       }
     },
-
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

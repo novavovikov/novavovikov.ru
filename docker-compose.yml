@@ -8,10 +8,12 @@ services:
       dockerfile: Dockerfile
     restart: on-failure
     environment:
+      - GITHUB_CLIENT_SECRET_KEY
+      - GITHUB_CLIENT_ID
       - GATSBY_GITHUB_SERVER_URL
       - GATSBY_GITHUB_REPOSITORY
     ports:
-      - 1234:80
+      - 80:80
       - 443:443
     networks:
       - blog_net

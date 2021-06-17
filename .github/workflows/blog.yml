@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - master
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron: '0 1 * * *'
 
 jobs:
   build:
@@ -13,6 +16,8 @@ jobs:
       - name: Building the app on remote server
         uses: appleboy/ssh-action@master
         env:
+          GITHUB_CLIENT_SECRET_KEY: ${{ secrets.GH_CLIENT_ID }}
+          GITHUB_CLIENT_ID: ${{ secrets.GH_CLIENT_SECRET_KEY }}
           GATSBY_GITHUB_SERVER_URL: $GITHUB_SERVER_URL
           GATSBY_GITHUB_REPOSITORY: $GITHUB_REPOSITORY
           MAIL_HOST: ${{ secrets.MAIL_HOST }}
@@ -28,7 +33,7 @@ jobs:
           script_stop: true
           script: |
             cd devarticles.space
-            git reset --hard origin/main
+            git reset --hard origin/master
             git pull
             docker-compose build
             docker-compose up --build --force-recreate -d
