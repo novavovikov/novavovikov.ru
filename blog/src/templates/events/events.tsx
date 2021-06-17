@@ -8,7 +8,7 @@ import { Coordinates } from '../../components/map/map'
 import { getDateObject } from '../../utils/date'
 import SubscribeForm from '../../components/subscribe-form'
 import FormPopup from '../../components/form-popup/form-popup'
-import s from './events.module.css'
+import * as s from './events.module.css'
 import { filterByDates } from '../../utils/filter'
 
 interface PageContext {

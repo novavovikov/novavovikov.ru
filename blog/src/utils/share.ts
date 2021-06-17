@@ -17,7 +17,7 @@ export interface ShareParams {
   /** Description about page */
   description: string
   /** Page images */
-  image?: string
+  image?: Nulled<string>
   /** Name of users (used in twitter only)*/
   via?: string
   /** Tags */

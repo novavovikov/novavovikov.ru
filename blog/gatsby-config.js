@@ -150,8 +150,9 @@ module.exports = {
               return allMarkdownRemark.edges.map((edge) => {
                 const siteUrl = site.siteMetadata.siteUrl
                 const postText = `
-                <div style="margin-top=55px; font-style: italic;">(Я статья опубликована на моём сайте devarticles.space. <a href="${siteUrl +
-                  edge.node.fields.slug}">Перейти</a>.)</div>
+                <div style="margin-top=55px; font-style: italic;">(Я статья опубликована на моём сайте devarticles.space. <a href="${
+                  siteUrl + edge.node.fields.slug
+                }">Перейти</a>.)</div>
               `
 
                 let html = edge.node.html
@@ -237,9 +238,9 @@ module.exports = {
         }
       }
     },
-    `gatsby-plugin-css-modules-typings`,
-    `gatsby-transformer-sharp`,
+    `gatsby-plugin-image`,
     'gatsby-plugin-sharp',
+    `gatsby-transformer-sharp`,
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-catch-links',
     'gatsby-plugin-use-query-params',

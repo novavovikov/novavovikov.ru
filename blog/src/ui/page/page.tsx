@@ -4,7 +4,7 @@ import Header from '../../components/header'
 import Footer from '../../components/footer'
 import Container from '../container'
 import SEO, { Props as SEOProps } from './seo'
-import s from './page.module.css'
+import * as s from './page.module.css'
 import Splash from '../splash/splash'
 
 interface Props extends React.HTMLAttributes<HTMLDivElement> {

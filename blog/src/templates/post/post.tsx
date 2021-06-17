@@ -8,7 +8,7 @@ import Post from '../../components/post'
 import { getPostImageUrl } from './utils'
 import PostPreview from '../../components/post-preview'
 import { LINKS } from '../../constants/links'
-import s from './post.module.css'
+import * as s from './post.module.css'
 
 export default function PostPage(props: PageProps<PostData, PostPageContext>) {
   const { location, pageContext, data } = props
@@ -31,7 +31,7 @@ export default function PostPage(props: PageProps<PostData, PostPageContext>) {
       seoProps={{
         title,
         description,
-        image: cover?.childImageSharp.fluid.src,
+        image: cover?.childImageSharp.gatsbyImageData,
         meta: [
           {
             property: 'article:published_time',
@@ -111,9 +111,7 @@ export const pageQuery = graphql`
         cover {
           id
           childImageSharp {
-            fluid(maxWidth: 400) {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(layout: FIXED)
           }
         }
       }
@@ -127,9 +125,7 @@ export const pageQuery = graphql`
       nodes {
         id
         childImageSharp {
-          fluid(maxWidth: 200) {
-            src
-          }
+          gatsbyImageData(width: 200)
         }
       }
     }

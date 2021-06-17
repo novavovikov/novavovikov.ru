@@ -2,7 +2,7 @@ import React from 'react'
 import cn from 'classnames'
 import { Link } from 'gatsby'
 import { PostPreviewData } from '../../typings/post-preview'
-import s from './post-preview.module.css'
+import * as s from './post-preview.module.css'
 
 interface Props extends PostPreviewData {
   inverse?: boolean

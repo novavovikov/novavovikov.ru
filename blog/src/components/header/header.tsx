@@ -4,7 +4,7 @@ import Container from '../../ui/container'
 import LogoIcon from './icons/logo.svg?inline'
 import Search from '../search'
 import ThemeControl from '../theme-control'
-import s from './header.module.css'
+import * as s from './header.module.css'
 import { ROUTES } from '../../constants/routes'
 
 export default function Header() {

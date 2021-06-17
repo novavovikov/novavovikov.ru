@@ -10,7 +10,7 @@ import { pluralizeText } from '../../utils/pluralizeText'
 import Banner from '../../components/banner'
 import { EventType } from '../../typings/event'
 import Sidebar from '../../components/sidebar'
-import s from './main.module.css'
+import * as s from './main.module.css'
 import Paginator from '../../components/paginator'
 import { filterByDates } from '../../utils/filter'
 
@@ -130,9 +130,7 @@ export const pageQuery = graphql`
             tags
             cover {
               childImageSharp {
-                fluid(maxWidth: 400) {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(width: 400)
               }
             }
           }

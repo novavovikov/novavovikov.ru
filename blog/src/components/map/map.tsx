@@ -7,7 +7,7 @@ import {
   MapState,
   MapProps
 } from 'react-yandex-maps'
-import s from './map.module.css'
+import * as s from './map.module.css'
 
 export type Coordinates = [lat: number, lng: number]
 

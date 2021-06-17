@@ -4,7 +4,7 @@ import Textarea from '../../ui/textarea'
 import Button from '../../ui/button'
 import { useField } from '../../hooks/use-field'
 import { PopupFormProps } from '../form-popup/form-popup'
-import s from './feedback-form.module.css'
+import * as s from './feedback-form.module.css'
 
 interface Data {
   name: string

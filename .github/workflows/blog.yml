@@ -7,32 +7,11 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-
-      - name: Setup SSH
-        uses: kielabokkie/ssh-key-and-known-hosts-action@v1
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          ssh-host: ${{ secrets.PROD_HOST }}
-
-      - name: Install Node.js
-        uses: actions/setup-node@v2-beta
-        with:
-          node-version: 15
-
-      - name: Build js
-        run: |
-          cd blog
-          npm i
-          npm run build
-      - name: Build images
-        run: |
-          docker-compose build
-          docker-compose push
-      - name: Deploy
+      - name: Building the app on remote server
+        uses: appleboy/ssh-action@master
         env:
           GATSBY_GITHUB_SERVER_URL: $GITHUB_SERVER_URL
           GATSBY_GITHUB_REPOSITORY: $GITHUB_REPOSITORY
@@ -40,8 +19,17 @@ jobs:
           MAIL_USER: ${{ secrets.MAIL_USER }}
           MAIL_PASS: ${{ secrets.MAIL_PASS }}
           MAIL_RECIPIENT: ${{ secrets.MAIL_RECIPIENT }}
-        run: |
-          export DOCKER_HOST=ssh://${{ secrets.PROD_USER }}@${{ secrets.PROD_HOST }}:${{ secrets.PROD_PORT }}
-          docker-compose pull
-          docker-compose up --build --force-recreate -d
-          unset DOCKER_HOST
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          port: ${{ secrets.REMOTE_PORT }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          command_timeout: 20m
+          script_stop: true
+          script: |
+            cd devarticles.space
+            git reset --hard origin/main
+            git pull
+            docker-compose build
+            docker-compose up --build --force-recreate -d
+            docker system prune -f

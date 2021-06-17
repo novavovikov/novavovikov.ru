@@ -1,6 +1,6 @@
 import React from 'react'
 import cn from 'classnames'
-import s from './container.module.css'
+import * as s from './container.module.css'
 
 interface Props extends React.HTMLAttributes<HTMLDivElement> {}
 

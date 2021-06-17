@@ -1,7 +1,7 @@
 import React from 'react'
 import cn from 'classnames'
 import DefaultComponent, { DefaultComponentProps } from '../default-component'
-import s from './button.module.css'
+import * as s from './button.module.css'
 
 interface Props {
   theme?: 'blue' | 'gray' | 'transparent'

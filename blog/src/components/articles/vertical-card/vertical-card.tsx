@@ -1,10 +1,10 @@
 import React from 'react'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import { Link } from 'gatsby'
 import Tags from '../../tags/tags'
 import Duration from '../../duration/duration'
 import { ArticleProps } from '../articles'
-import s from './vertical-card.module.css'
+import * as s from './vertical-card.module.css'
 
 export default function VerticalCard(props: ArticleProps) {
   const { fields, frontmatter, timeToRead, parent } = props.data
@@ -15,9 +15,12 @@ export default function VerticalCard(props: ArticleProps) {
       <div className={s.VCard__body}>
         <Link to={fields.slug} className={s.VCard__imgLink}>
           {cover && (
-            <Img
+            <GatsbyImage
               className={s.VCard__img}
-              fluid={cover.childImageSharp.fluid}
+              backgroundColor={
+                cover.childImageSharp.gatsbyImageData.backgroundColor
+              }
+              image={cover.childImageSharp.gatsbyImageData}
               alt={title}
               imgStyle={{
                 transition: '0.25s'

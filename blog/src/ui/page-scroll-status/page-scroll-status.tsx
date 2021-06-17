@@ -1,5 +1,5 @@
 import React from 'react'
-import s from './page-scroll-status.module.css'
+import * as s from './page-scroll-status.module.css'
 
 export default function PageScrollStatus() {
   const [offset, setOffset] = React.useState<number>(0)

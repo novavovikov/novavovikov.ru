@@ -6,7 +6,7 @@ import fbIcon from './icons/fb.svg?inline'
 import { ShareParams, SocialSystem } from '../../utils/share'
 import ShareLink from '../../ui/share-link'
 import MobileShare from './mobile-share'
-import s from './share.module.css'
+import * as s from './share.module.css'
 
 const SYSTEMS_DATA = [
   {

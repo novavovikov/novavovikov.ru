@@ -1,21 +1,25 @@
 version: '3.7'
 
 services:
-  app:
-    build: .
+  blog:
+    container_name: blog
+    build:
+      context: ./blog
+      dockerfile: Dockerfile
     restart: on-failure
     environment:
       - GATSBY_GITHUB_SERVER_URL
       - GATSBY_GITHUB_REPOSITORY
     ports:
-      - 80:80
+      - 1234:80
       - 443:443
     networks:
       - blog_net
     depends_on:
-      - mail
+      - mail_server
 
-  mail:
+  mail_server:
+    container_name: mail_server
     build: ./mail-server
     restart: on-failure
     environment:

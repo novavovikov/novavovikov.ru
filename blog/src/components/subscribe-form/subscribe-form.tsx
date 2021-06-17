@@ -3,7 +3,7 @@ import Input from '../../ui/input/input'
 import Button from '../../ui/button'
 import { useField } from '../../hooks/use-field'
 import { PopupFormProps } from '../form-popup/form-popup'
-import s from './subscribe-form.module.css'
+import * as s from './subscribe-form.module.css'
 
 interface Data {
   name: string

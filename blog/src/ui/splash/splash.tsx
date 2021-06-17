@@ -1,7 +1,7 @@
 import React from 'react'
 import cn from 'classnames'
 import Loader from './icons/loader.svg?inline'
-import s from './splash.module.css'
+import * as s from './splash.module.css'
 
 interface Props {
   hidden?: boolean

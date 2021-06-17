@@ -6,7 +6,7 @@ import ExternalLink from '../../ui/external-link'
 import { ls } from '../../utils/storage'
 import { Interval } from '../../ui/date-time'
 import { getDateObject } from '../../utils/date'
-import s from './banner.module.css'
+import * as s from './banner.module.css'
 import { ROUTES } from '../../constants/routes'
 
 interface Props {

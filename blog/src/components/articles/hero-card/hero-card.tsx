@@ -1,6 +1,6 @@
 import React from 'react'
 import { ArticleProps } from '../articles'
-import s from './hero-card.module.css'
+import * as s from './hero-card.module.css'
 
 export default function HeroCard(props: ArticleProps) {
   return (

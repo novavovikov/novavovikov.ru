@@ -1,6 +1,6 @@
 import React from 'react'
 import cn from 'classnames'
-import s from './duration.module.css'
+import * as s from './duration.module.css'
 
 interface Props extends React.HTMLAttributes<HTMLDivElement> {
   date: string

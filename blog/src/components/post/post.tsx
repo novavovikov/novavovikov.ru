@@ -1,10 +1,10 @@
 import React from 'react'
 import { ArticleInfo } from '../../typings/markdown'
 import Duration from '../duration'
-import Img from 'gatsby-image'
+import { GatsbyImage, getSrc } from 'gatsby-plugin-image'
 import ExternalLink from '../../ui/external-link'
 import ShareMenu from '../share-menu'
-import s from './post.module.css'
+import * as s from './post.module.css'
 import Tags from '../tags/tags'
 import PageScrollStatus from '../../ui/page-scroll-status'
 
@@ -17,7 +17,7 @@ interface Props {
 export default function Post(props: Props) {
   const { html, timeToRead, parent } = props.article
   const { title, description, date, cover, tags } = props.article.frontmatter
-  const coverFluid = cover?.childImageSharp.fluid
+  const coverImageData = cover?.childImageSharp.gatsbyImageData
 
   return (
     <div className={s.Post}>
@@ -47,15 +47,16 @@ export default function Post(props: Props) {
           url={props.postLink}
           title={title}
           description={description}
-          image={coverFluid?.src}
+          image={coverImageData ? getSrc(coverImageData) : null}
         />
         <PageScrollStatus />
       </div>
 
-      {coverFluid && (
-        <Img
+      {coverImageData && (
+        <GatsbyImage
           className={s.Post__img}
-          fluid={coverFluid}
+          backgroundColor={coverImageData.backgroundColor}
+          image={coverImageData}
           alt={title}
           imgStyle={{
             transition: '0.25s'

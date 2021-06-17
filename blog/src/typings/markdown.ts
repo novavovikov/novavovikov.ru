@@ -1,7 +1,7 @@
-import { FluidObject } from 'gatsby-image'
+import { IGatsbyImageData } from 'gatsby-plugin-image'
 
-interface ChildImageSharp {
-  fluid: FluidObject
+export interface ChildImageSharp {
+  gatsbyImageData: IGatsbyImageData
 }
 
 export interface ArticleMeta {

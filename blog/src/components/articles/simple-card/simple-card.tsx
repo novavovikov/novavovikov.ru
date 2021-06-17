@@ -1,10 +1,10 @@
 import React from 'react'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import { Link } from 'gatsby'
 import { ArticleProps } from '../articles'
 import Tags from '../../tags'
 import Duration from '../../duration'
-import s from './simple-card.module.css'
+import * as s from './simple-card.module.css'
 
 export default function SimpleCard(props: ArticleProps) {
   const { fields, frontmatter, timeToRead, parent } = props.data
@@ -15,10 +15,14 @@ export default function SimpleCard(props: ArticleProps) {
       <div className={s.SCard__body}>
         <Link to={fields.slug} className={s.SCard__imgLink}>
           {cover && (
-            <Img
+            <GatsbyImage
               className={s.SCard__img}
-              fluid={cover.childImageSharp.fluid}
+              backgroundColor={
+                cover.childImageSharp.gatsbyImageData.backgroundColor
+              }
+              image={cover.childImageSharp.gatsbyImageData}
               alt={title}
+              objectFit="cover"
               imgStyle={{
                 transition: '0.25s'
               }}

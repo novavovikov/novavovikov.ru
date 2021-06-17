@@ -1,6 +1,6 @@
 import React from 'react'
 import cn from 'classnames'
-import s from './sidebar-block.module.css'
+import * as s from './sidebar-block.module.css'
 import DefaultComponent, {
   DefaultComponentProps
 } from '../../ui/default-component'

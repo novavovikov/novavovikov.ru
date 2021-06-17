@@ -1,6 +1,6 @@
 import React from 'react'
 import cn from 'classnames'
-import s from './input.module.css'
+import * as s from './input.module.css'
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {}
 

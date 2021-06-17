@@ -3,7 +3,7 @@ import cn from 'classnames'
 import { Link } from 'gatsby'
 import { useQueryParam } from 'use-query-params'
 import { QUERY_PARAM } from '../../constants/queryParams'
-import s from './tags.module.css'
+import * as s from './tags.module.css'
 import { ROUTES } from '../../constants/routes'
 
 interface Props {

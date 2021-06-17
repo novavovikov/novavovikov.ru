@@ -1,6 +1,6 @@
 import React from 'react'
 import useDarkMode from 'use-dark-mode'
-import s from './theme-control.module.css'
+import * as s from './theme-control.module.css'
 
 export default function ThemeControl() {
   const [mounted, setMounted] = React.useState<boolean>(false)

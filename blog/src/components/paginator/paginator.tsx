@@ -2,7 +2,7 @@ import React from 'react'
 import cn from 'classnames'
 import { Link } from 'gatsby'
 
-import s from './paginator.module.css'
+import * as s from './paginator.module.css'
 import { ROUTES } from '../../constants/routes'
 
 interface Props extends React.HTMLAttributes<HTMLDivElement> {

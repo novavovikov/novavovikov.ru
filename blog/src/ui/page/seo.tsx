@@ -1,4 +1,5 @@
 import React from 'react'
+import { getSrc, IGatsbyImageData } from 'gatsby-plugin-image'
 import { Helmet, HelmetProps } from 'react-helmet'
 import { graphql, useStaticQuery } from 'gatsby'
 
@@ -20,7 +21,7 @@ const query = graphql`
 
 export interface Props {
   meta?: HelmetProps['meta']
-  image?: string
+  image?: IGatsbyImageData
   title?: string
   description?: string
   slug?: string
@@ -40,7 +41,7 @@ export default function SEO({
   const metaUrl = `${siteMetadata.siteUrl}${slug}`
   const metaTitle = title || siteMetadata.title
   const metaDescription = description || siteMetadata.description
-  const metaImage = image ? `${siteMetadata.siteUrl}/${image}` : null
+  const metaImage = image ? `${siteMetadata.siteUrl}/${getSrc(image)}` : null
 
   const metaTitleProps = React.useMemo(() => {
     if (title) {

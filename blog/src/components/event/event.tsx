@@ -2,7 +2,7 @@ import React from 'react'
 import ExternalLink from '../../ui/external-link'
 import { getGoogleCalendarLink } from '../../utils/calendar-event'
 import { Interval } from '../../ui/date-time'
-import s from './event.module.css'
+import * as s from './event.module.css'
 
 interface Props {
   url: string

@@ -3,7 +3,7 @@ import { ArticleType, MarkdownEdge } from '../../typings/markdown'
 import EmptyState from './empty-state'
 import SimpleCard from './simple-card'
 import VerticalCard from './vertical-card'
-import s from './articles.module.css'
+import * as s from './articles.module.css'
 import HeroCard from './hero-card'
 
 export interface ArticleProps {

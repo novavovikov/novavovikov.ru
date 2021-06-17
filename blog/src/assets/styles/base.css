@@ -1,17 +1,16 @@
-:global {
-  * {
+* {
     box-sizing: border-box;
-  }
+}
 
-  html {
+html {
     font-size: 16px;
 
     @media only screen and (max-width: 670px) {
-      font-size: 15px;
+        font-size: 15px;
     }
-  }
+}
 
-  body {
+body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     background: var(--c-bg-main);
     color: var(--c-text-main);
@@ -21,80 +20,80 @@
     line-height: 1.5;
     margin: 0;
     -webkit-overflow-scrolling: touch;
-  }
+}
 
-  button,
-  input,
-  select,
-  textarea {
+button,
+input,
+select,
+textarea {
     font-family: inherit;
     color: inherit;
     font-size: inherit;
-  }
+}
 
-  input::placeholder,
-  textarea::placeholder,
-  select::placeholder {
+input::placeholder,
+textarea::placeholder,
+select::placeholder {
     color: inherit;
     opacity: 0.5;
-  }
+}
 
-  button {
+button {
     padding: 0;
     margin: 0;
     border: none;
     cursor: pointer;
-  }
+}
 
-  a {
+a {
     color: var(--c-accent);
 
     &:hover {
-      color: var(--c-accent-secondary);
+        color: var(--c-accent-secondary);
     }
-  }
+}
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: Futura, ‘Century Gothic’, AppleGothic, sans-serif;
     margin-top: 2em;
     margin-bottom: 1em;
-  }
+}
 
-  h1 .anchor svg,
-  h2 .anchor svg,
-  h3 .anchor svg,
-  h4 .anchor svg,
-  h5 .anchor svg,
-  h6 .anchor svg {
+h1 .anchor svg,
+h2 .anchor svg,
+h3 .anchor svg,
+h4 .anchor svg,
+h5 .anchor svg,
+h6 .anchor svg {
     fill: var(--c-accent);
-  }
+}
 
-  .icon {
+.icon {
     fill: var(--c-icon);
 
     &:hover {
-      fill: var(--c-accent);
+        fill: var(--c-accent);
     }
-  }
+}
 
-  .illustration {
+.illustration {
     fill: var(--c-illustration);
-  }
+}
 
-  .gatsby-highlight {
+.gatsby-highlight {
     display: grid;
-  }
+}
 
-  ol, ul {
+ol, ul {
     padding-left: 20px;
-  }
+}
 
-  hr {
+hr {
     position: relative;
     margin: 40px auto;
     border: none;
@@ -105,22 +104,21 @@
     background: var(--c-text-main);
 
     &:before, &:after {
-      content: '';
-      display: block;
-      position: absolute;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background: var(--c-text-main);
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background: var(--c-text-main);
     }
 
     &:before {
-      left: 40px;
+        left: 40px;
     }
 
     &:after {
-      right: 40px;
+        right: 40px;
     }
-  }
 }

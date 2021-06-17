@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import s from './events-block.module.css'
+import * as s from './events-block.module.css'
 import { pluralizeText } from '../../utils/pluralizeText'
 
 interface Props {

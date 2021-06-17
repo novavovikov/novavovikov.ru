@@ -11,7 +11,7 @@ import ExternalLink from '../../ui/external-link'
 import { LINKS } from '../../constants/links'
 import Button from '../../ui/button'
 import { useSidebarSwipes } from './use-sidebar-swipes'
-import s from './sidebar.module.css'
+import * as s from './sidebar.module.css'
 import FormPopup from '../form-popup'
 import FeedbackForm from '../feedback-form'
 import { ROUTES } from '../../constants/routes'
@@ -28,18 +28,11 @@ interface Props {
 export default function Sidebar(props: Props) {
   const { tags, socialData, frontendEventsCount, kotlinEventsCount } = props
 
-  const {
-    sidebarRef,
-    controlRef,
-    position,
-    speed,
-    opened,
-    setOpenStatus
-  } = useSidebarSwipes()
+  const { sidebarRef, controlRef, position, speed, opened, setOpenStatus } =
+    useSidebarSwipes()
 
-  const [feedbackVisibility, setFeedbackVisibility] = React.useState<boolean>(
-    false
-  )
+  const [feedbackVisibility, setFeedbackVisibility] =
+    React.useState<boolean>(false)
 
   const onCloseSidebar = React.useCallback(() => {
     setOpenStatus(false)

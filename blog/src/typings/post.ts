@@ -1,13 +1,9 @@
-import { ArticleInfo, Site } from './markdown'
+import { ArticleInfo, ChildImageSharp } from './markdown'
 import { PostPreviewData } from './post-preview'
 
 export interface PostImageFile {
   id: string
-  childImageSharp: {
-    fluid: {
-      src: string
-    }
-  }
+  childImageSharp: ChildImageSharp
 }
 
 export interface PostData {

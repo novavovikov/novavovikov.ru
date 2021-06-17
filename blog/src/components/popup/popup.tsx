@@ -2,7 +2,7 @@ import React from 'react'
 import cn from 'classnames'
 import ReactDOM from 'react-dom'
 import { PopupProps } from './index'
-import s from './popup.module.css'
+import * as s from './popup.module.css'
 
 const bodyNode = typeof document !== 'undefined' && document.body
 
