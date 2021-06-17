@@ -1,6 +1,5 @@
 import React from 'react'
 import { graphql, PageProps } from 'gatsby'
-import '@suziwen/gitalk/dist/gitalk.css'
 import formatISO from 'date-fns/formatISO'
 import { PostData, PostPageContext } from '../../typings/post'
 import Page from '../../ui/page'
