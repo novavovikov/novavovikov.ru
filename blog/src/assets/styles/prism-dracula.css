@@ -4,6 +4,23 @@
  *
  * Ported for PrismJS by Albert Vallverdu [@byverdu]
  */
+blockquote {
+    border-left: 4px solid var(--c-accent-secondary);
+    margin: 1.5em 0;
+    padding: .5em 1.5em;
+    color: inherit;
+    background: var(--c-bg-main);
+}
+
+blockquote p {
+    margin: 0;
+}
+
+p {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+}
+
 code[class*="language-"],
 pre[class*="language-"] {
     font-size: 0.86em;
