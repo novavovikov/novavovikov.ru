@@ -46,12 +46,12 @@ export default function SEO({
   const metaTitleProps = React.useMemo(() => {
     if (title) {
       return {
-        titleTemplate: `%s — ${siteMetadata.title.toLowerCase()} - 🧑‍💻 Developer articles`,
+        titleTemplate: `%s — ${siteMetadata.title.toLowerCase()} - 🧑‍💻 База знаний DevArticles`,
         title
       }
     }
 
-    return { title: `🧑‍💻 Developer articles - ${siteMetadata.title}` }
+    return { title: `🧑‍💻 База знаний DevArticles - ${siteMetadata.title}` }
   }, [title, siteMetadata.title])
 
   const mediaMeta = React.useMemo(() => {
