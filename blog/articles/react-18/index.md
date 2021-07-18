@@ -17,7 +17,7 @@ tags:
 
 - [автоматическая группировка изменения](/articles/react-18-batching/) состояний для меньшего количества рендеров
 - новое API ([createRoot](https://ru.reactjs.org/docs/concurrent-mode-reference.html#createroot),
-  [startTransition](https://github.com/reactwg/react-18/discussions/41),
+  [startTransition](/articles/react-18-start-transition/),
   [useDeferredValue](https://ru.reactjs.org/docs/concurrent-mode-reference.html#usedeferredvalue),
   [SuspenseList](https://ru.reactjs.org/docs/concurrent-mode-reference.html#suspenselist))
 - [потоковый рендер на сервере](https://github.com/reactwg/react-18/discussions/37)
