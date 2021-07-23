@@ -16,7 +16,7 @@ tags:
 Когда выйдет новая версия React, то из коробки будут предоставляться следующие улучшения:
 
 - [автоматическая группировка изменения](/articles/react-18-batching/) состояний для меньшего количества рендеров
-- новое API ([createRoot](https://ru.reactjs.org/docs/concurrent-mode-reference.html#createroot),
+- новое API ([createRoot](/articles/react-18-create-root),
   [startTransition](/articles/react-18-start-transition/),
   [useDeferredValue](https://ru.reactjs.org/docs/concurrent-mode-reference.html#usedeferredvalue),
   [SuspenseList](https://ru.reactjs.org/docs/concurrent-mode-reference.html#suspenselist))
