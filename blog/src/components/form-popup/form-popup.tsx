@@ -16,12 +16,13 @@ interface Props extends PopupProps {
 
 export default function FormPopup<Data>(props: Props) {
   const {
+    requestUrl,
     children,
     successMessage = 'Спасибо, сообщение отправлено!',
     ...restProps
   } = props
-  const [state, request] = useAsyncFn(
-    async (data: Data) => axios.post(request.url, data),
+  const [state, requestHandler] = useAsyncFn(
+    async (data: Data) => axios.post(requestUrl, data),
     []
   )
 
@@ -38,7 +39,7 @@ export default function FormPopup<Data>(props: Props) {
               return React.cloneElement(child, {
                 isLoading: state.loading,
                 hasError: Boolean(state.error),
-                onSubmit: request
+                onSubmit: requestHandler
               })
             }
           })}
