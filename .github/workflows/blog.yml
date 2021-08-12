@@ -36,5 +36,5 @@ jobs:
             git reset --hard origin/master
             git pull
             docker-compose build
-            docker-compose up --build --force-recreate -d
+            docker-compose up --force-recreate -d
             docker system prune -f
