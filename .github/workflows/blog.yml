@@ -16,8 +16,6 @@ jobs:
       - name: Building the app on remote server
         uses: appleboy/ssh-action@master
         env:
-          GITHUB_CLIENT_SECRET_KEY: ${{ secrets.GH_CLIENT_ID }}
-          GITHUB_CLIENT_ID: ${{ secrets.GH_CLIENT_SECRET_KEY }}
           GATSBY_GITHUB_SERVER_URL: $GITHUB_SERVER_URL
           GATSBY_GITHUB_REPOSITORY: $GITHUB_REPOSITORY
           MAIL_HOST: ${{ secrets.MAIL_HOST }}
@@ -29,9 +27,16 @@ jobs:
           username: ${{ secrets.REMOTE_USER }}
           port: ${{ secrets.REMOTE_PORT }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          envs: GATSBY_GITHUB_SERVER_URL,GATSBY_GITHUB_REPOSITORY,MAIL_HOST,MAIL_USER,MAIL_PASS,MAIL_RECIPIENT
           command_timeout: 20m
           script_stop: true
           script: |
+            export GATSBY_GITHUB_SERVER_URL=$GATSBY_GITHUB_SERVER_URL
+            export GATSBY_GITHUB_REPOSITORY=$GATSBY_GITHUB_REPOSITORY
+            export MAIL_HOST=$MAIL_HOST
+            export MAIL_USER=$MAIL_USER
+            export MAIL_PASS=$MAIL_PASS
+            export MAIL_RECIPIENT=$MAIL_RECIPIENT
             cd devarticles.space
             git reset --hard origin/master
             git pull
