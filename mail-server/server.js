@@ -34,7 +34,7 @@ transporter.use(
 );
 
 app.post("/feedback", function (req, res) {
-  const { from, subject, message } = req.body;
+  const { from = process.env.MAIL_USER, name, message } = req.body;
 
   if (!message) {
     return res.status(400).send({
@@ -45,13 +45,13 @@ app.post("/feedback", function (req, res) {
 
   transporter.sendMail(
     {
-      from,
+      from: process.env.MAIL_USER,
       to: [process.env.MAIL_RECIPIENT],
-      subject: subject || "[No subject]",
+      subject: name || "[No subject]",
       template: "feedback",
       context: {
         from,
-        subject,
+        name,
         message,
       },
     },
