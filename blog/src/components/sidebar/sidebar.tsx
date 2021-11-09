@@ -72,14 +72,6 @@ export default function Sidebar(props: Props) {
         className={cn(s.Sidebar, { [s.Sidebar_opened]: opened })}
         ref={sidebarRef}
         style={sidebarStyles}>
-        <Button
-          className={s.SidebarAside__article}
-          theme="gray"
-          as={ExternalLink}
-          href={`${LINKS.blog}/articles`}>
-          ✍️ Написать статью
-        </Button>
-
         <SidebarBlock
           className={s.SidebarAside__events}
           title="События"
