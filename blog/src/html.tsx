@@ -31,7 +31,7 @@ export default function HTML({
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
-        <title>🧑‍💻 База знаний DevArticles</title>
+        <title>🧑‍💻 База знаний novavovikov</title>
 
         <link
           rel="apple-touch-icon"

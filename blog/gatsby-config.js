@@ -16,10 +16,10 @@ module.exports = {
     )
   },
   siteMetadata: {
-    title: 'devarticles.space',
+    title: 'novavovikov.ru',
     author: 'novavovikov',
     description: 'Articles for developers',
-    siteUrl: 'https://devarticles.space',
+    siteUrl: 'https://novavovikov.ru',
     social: {
       twitter: 'https://twitter.com/novavovikov',
       github: 'https://github.com/novavovikov',
@@ -144,7 +144,7 @@ module.exports = {
               return allMarkdownRemark.edges.map((edge) => {
                 const siteUrl = site.siteMetadata.siteUrl
                 const postText = `
-                <div style="margin-top=55px; font-style: italic;">(Я статья опубликована на моём сайте devarticles.space. <a href="${
+                <div style="margin-top=55px; font-style: italic;">(Статья опубликована на моём сайте novavovikov.ru. <a href="${
                   siteUrl + edge.node.fields.slug
                 }">Перейти</a>.)</div>
               `
@@ -191,7 +191,7 @@ module.exports = {
               }
             `,
             output: '/rss.xml',
-            title: 'DevArticles RSS Feed'
+            title: 'novavovikov RSS Feed'
           }
         ]
       }
@@ -199,8 +199,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `DevArticles`,
-        short_name: `DevArticles`,
+        name: `novavovikov`,
+        short_name: `novavovikov`,
         description: 'Articles for developers',
         icons: [
           {

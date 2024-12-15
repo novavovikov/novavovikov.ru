@@ -10,5 +10,5 @@ RUN ["npm", "run", "build"]
 FROM nginx:1.19.1
 EXPOSE 80
 EXPOSE 443
-COPY --from=builder /app/public /var/www/devarticles.space/
+COPY --from=builder /app/public /var/www/novavovikov.ru/
 COPY nginx /etc/nginx/

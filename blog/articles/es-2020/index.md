@@ -20,7 +20,7 @@ tags:
 - повышена стандартизация `for-in` порядка перечисления;
 - `import.meta` - объект, заполненный хостом, доступный в модулях, который может содержать контекстную информацию о модуле;
 - и две новые функции синтаксиса для улучшения работы с «нулевыми» значениями (`null` или `undefined`):
-  [nullish coalescing](https://devarticles.space/chto-takoe-nullish-coalescing/) - оператор выбора значений;
+  [nullish coalescing](https://novavovikov.ru/chto-takoe-nullish-coalescing/) - оператор выбора значений;
   [optional chaining](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining) - позволяет считывать значение свойства, расположенного глубоко в цепочке связанных объектов, без необходимости явно проверять правильность каждой ссылки в цепочке.
 
 #### [Динамический импорт](https://exploringjs.com/impatient-js/ch_modules.html#loading-modules-dynamically-via-import)

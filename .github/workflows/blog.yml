@@ -37,7 +37,7 @@ jobs:
             export MAIL_USER=$MAIL_USER
             export MAIL_PASS=$MAIL_PASS
             export MAIL_RECIPIENT=$MAIL_RECIPIENT
-            cd devarticles.space
+            cd novavovikov.ru
             git reset --hard origin/master
             git pull
             docker-compose build
