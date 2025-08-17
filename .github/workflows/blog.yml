@@ -27,7 +27,6 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           envs: GATSBY_GITHUB_SERVER_URL,GATSBY_GITHUB_REPOSITORY,MAIL_HOST,MAIL_USER,MAIL_PASS,MAIL_RECIPIENT
           command_timeout: 20m
-          script_stop: true
           script: |
             export GATSBY_GITHUB_SERVER_URL=$GATSBY_GITHUB_SERVER_URL
             export GATSBY_GITHUB_REPOSITORY=$GATSBY_GITHUB_REPOSITORY
